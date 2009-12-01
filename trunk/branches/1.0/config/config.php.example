@@ -1,0 +1,16 @@
+<?php
+
+
+// database connection
+define("DB_HOST",	"localhost");
+define("DB_NAME",	"dp");
+define("DB_USER",	"root");
+define("DB_PASS",	"");
+
+// path to Smarty.class.php in Smarty libs with final /
+define("TEMPLATE_LIBS_PATH",	"C:/Smarty-2.6.26/libs/");
+
+// print debug messages
+define("DEBUG_MODE",	false);
+
+?>
