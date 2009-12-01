@@ -69,6 +69,9 @@ switch($step){
 		$smarty->assign('five',$activeMenu);
 		unset($_SESSION['dp']);
 		break;
+	case "End":
+		$dpId = $_SESSION['dp']->getId();
+		Url::relocate("dp.php?menu=dpList");
 		
 			
 }

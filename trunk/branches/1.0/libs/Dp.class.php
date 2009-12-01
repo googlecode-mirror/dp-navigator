@@ -1280,7 +1280,7 @@ class Dp{
 
 
 					//GET RELATED PATTERNS
-					$queryRelatedPattern = "SELECT PR.pattern_relationShip_name,RP.related_pattern_id FROM pattern P, pattern_relationShip PR, related_pattern RP WHERE P.pattern_id = RP.pattern_id AND PR.pattern_relationShip_id = RP.pattern_relationShip AND P.pattern_id= '".$id."'" ;
+					$queryRelatedPattern = "SELECT PR.pattern_relationShip_name,RP.related_pattern_id, RP.related_pattern_name FROM pattern P, pattern_relationShip PR, related_pattern RP WHERE P.pattern_id = RP.pattern_id AND PR.pattern_relationShip_id = RP.pattern_relationShip AND P.pattern_id= '".$id."'" ;
 					$resultSetRelatedPattern =  $db->execQuery($queryRelatedPattern);
 					$numRowsRelatedPattern = $db->resultSetNumRows($resultSetRelatedPattern);
 					if ($numRowsRelatedPattern == 0){

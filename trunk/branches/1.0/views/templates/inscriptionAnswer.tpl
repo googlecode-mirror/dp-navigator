@@ -16,12 +16,12 @@
 			   &nbsp;</div>			
 			 <form id="passwordforget" name="passwordforget" method="post" action="" onSubmit="return verifPasswordForget()">
 			 <p style="text-align:justify">Votre compte a &eacute;t&eacute; cr&eacute;e avec succ&egrave;s.
-			   Vous pouvez maintenant vous connectez &agrave; DPWEB.<br>Bonne navigation! </p>
+			   Vous pouvez maintenant vous connecter.<br>Bonne navigation! </p>
 	          <div align="left"></div>
 			 </form>
 			 <div class="barre"></div><br/>
-             <p align="left"><a href="home.php">Connectez-vous &agrave; DPWEB </a> | <a href="javascript: alert('Aide indisponible !');">Aide</a></p>
-			 <p class="style1" style="text-align: left; font-size: 12pt;"><a href="inscription.php"><strong>Nouveau compte ! </strong></a></p>
+             <p align="left"><a href="home.php">Connectez-vous. </a> <!--| <a href="javascript: alert('Aide indisponible !');">Aide</a--></p>
+			 <p class="style1" style="text-align: left; font-size: 12pt;"><a href="inscription.php"><strong>Créer un nouveau compte !</strong></a></p>
 		    </div>
 		</div>	
 	</div>
