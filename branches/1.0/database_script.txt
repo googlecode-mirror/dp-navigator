@@ -1,0 +1,556 @@
+-- phpMyAdmin SQL Dump
+-- version 3.0.1.1
+-- http://www.phpmyadmin.net
+--
+-- Serveur: localhost
+-- Généré le : Jeu 23 Avril 2009 à 14:39
+-- Version du serveur: 5.0.77
+-- Version de PHP: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Base de données: `dp`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `actors`
+--
+
+CREATE TABLE IF NOT EXISTS `actors` (
+  `actors_id` int(11) NOT NULL auto_increment,
+  `actors_type` varchar(30) NOT NULL,
+  PRIMARY KEY  (`actors_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `actors`
+--
+
+INSERT INTO `actors` (`actors_id`, `actors_type`) VALUES
+(1, 'teacher'),
+(2, 'student'),
+(3, 'Instructional designer');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `autors`
+--
+
+CREATE TABLE IF NOT EXISTS `autors` (
+  `autors_id` int(11) NOT NULL auto_increment,
+  `autors_name` varchar(30) NOT NULL,
+  PRIMARY KEY  (`autors_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `autors`
+--
+
+INSERT INTO `autors` (`autors_id`, `autors_name`) VALUES
+(1, 'J.M LABAT');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `category`
+--
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `category_id` int(11) NOT NULL auto_increment,
+  `category_name` varchar(30) NOT NULL,
+  PRIMARY KEY  (`category_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `category`
+--
+
+INSERT INTO `category` (`category_id`, `category_name`) VALUES
+(1, 'Actions and Events Patterns');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `comment`
+--
+
+CREATE TABLE IF NOT EXISTS `comment` (
+  `comment_id` int(1) NOT NULL auto_increment,
+  `comment_dp` int(1) NOT NULL,
+  `comment_text` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `comment_autor` int(1) NOT NULL,
+  `comment_date` int(1) NOT NULL,
+  PRIMARY KEY  (`comment_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `comment_dp`, `comment_text`, `comment_autor`, `comment_date`) VALUES
+(1, 8, 'rffssfsfgfsf', 3, 0),
+(2, 4, 'sdssddcdsssss', 3, 0),
+(3, 4, 'qsdddddddqdd', 4, 0),
+(4, 4, 'ras', 4, 0),
+(5, 4, 'ras', 4, 1240490294);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pattern`
+--
+
+CREATE TABLE IF NOT EXISTS `pattern` (
+  `pattern_id` int(1) NOT NULL auto_increment,
+  `pattern_name` varchar(200) NOT NULL,
+  `pattern_abstract` text NOT NULL,
+  `pattern_problem_statement` text,
+  `pattern_problem_analysis` text NOT NULL,
+  `pattern_solution_name` varchar(200) NOT NULL,
+  `pattern_solution_desc` text NOT NULL,
+  `pattern_solution_discussion` text,
+  `pattern_solution_indicators` text,
+  `pattern_solution_methods` text,
+  `pattern_creationDate` int(1) default NULL,
+  `pattern_desc` text NOT NULL,
+  `pattern_biblio` text NOT NULL,
+  `pattern_creator` int(1) NOT NULL,
+  PRIMARY KEY  (`pattern_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Contenu de la table `pattern`
+--
+
+INSERT INTO `pattern` (`pattern_id`, `pattern_name`, `pattern_abstract`, `pattern_problem_statement`, `pattern_problem_analysis`, `pattern_solution_name`, `pattern_solution_desc`, `pattern_solution_discussion`, `pattern_solution_indicators`, `pattern_solution_methods`, `pattern_creationDate`, `pattern_desc`, `pattern_biblio`, `pattern_creator`) VALUES
+(1, 'nadqdd', 'ffdgdddddd', 'ccwcwvcvccc', 'xwcwcwxcxx', 'xwwcxwcxcx', 'gfffffffffffffffgf', 'qsdsfffd', 'xxcxcxwcxcc', 'xwcxcwxcw', 1239828064, 'dfdssssddddddd', 'sdsqqsffdsfsddfdsdf', 0),
+(2, 'MVC', 'abstract', 'problem', 'analysis', 'solution', 'description', 'discuss', 'indicators', 'methods', 1239831164, 'description', 'J.M DESIGN PATTERN FOR GAMES', 0),
+(3, 'zerererez', 'ezrererer', 'ezzzrerezrer', 'fsddddddddddddddddddddddd', 'dsssfddfss', 'fffaezzrgth', 'gdgferggreer', 'fdsssfsffffffffffffffffffff', 'fssffsffsfsffsfff', 1239832591, 'dfedff', 'sfffggsgsgfgggfg', 0),
+(4, 'szrezre', 'zeerererez', 'ezrzrerezrztrzr', 'zeeeeeeeeeeee', 'eeeeeeeeeregggg', 'frrfffsfrf', 'rfrzrzfrrrrrr', 'rzerereerereree', 'ereeeffffffff', 1239832799, 'daeeeezzrfffz', 'sdfdfdfsfsffsd', 0),
+(5, 'dfdfdf', 'dsssssfdfdsf', 'eadeeedefeffd', 'qdfdfdqffqdfdf', 'fsdqfddddddddd', 'ddddqfq', 'dfdfdsfsdf', 'sdddfdf', 'fddfdffdf', 1239833238, 'efeefffqfdqqd', 'sdfffdfsssssdddddfsssdss', 0),
+(6, 'gffd', 'dggdgf', 'rgfdddddddddddddddddd', 'dffffffffffffffffffffff', 'fdgfddddddddddg', 'ggggggggggggggggggggg', 'dfffffffffffffffffffffff', 'fdddddddddddddddddddd', 'dffffffffffffffg', 1239833908, 'frsfsf', 'dfdfggdgdffff', 0),
+(7, 'sgfdfdgff', 'ghfghfghgfhfghf', 'fhdghfffffffff', 'gggfhfhghf', 'gfhfhgh', 'fghhhhhhhhhhhhhhhhhhhh', 'fghfhhgfhffffgh', 'gddddhhhhhhhhhhhhh', 'fgggggghhhhhhhhhhhhhhhhhh', 1239834809, 'ghdhhghfhf', 'rdgsfgfdgfdgdddg', 0),
+(8, 'eerer,,,,,,cw,,', 'wkcckckk', 'fdbhdjjjdsooatadb dqd', 'bvbhwchhwgfdgggdd', 'bbfdgdgdggdgdggd', 'dhdhshfhdh', 'nhfdssyhyaoopkjddnn', 'bddgggdgdghdhdiksosododso', 'ndnnddhhha', 1239835635, 'dsssssssssn,pamam', 'bbbbdgggdgdggdgd', 0),
+(9, 'dcqsdds', 'dsfdfdsdf', 'qzddsqqqd', 'DSDDDQD', 'SXSSSSSssSS', 'DDffffff', 'sqdddqaae', 'SSSSSssssssSSQ', 'QDQDQ', 1239935950, 'dddddddddddddddf', 'ssddddddddf', 2),
+(10, 'ssssf', 'ffdf', 'ddsfdsfdf', 'sqddfdf', 'fgfffd', 'fsdg', 'fddfgf', 'fffffdfddfgg', 'qddfdf', 1239937959, 'fdfdgfdg', 'vcccccccccvvvvvvv', 2),
+(11, 'dd', 'sfss', 'dsdssf', 'ddddd', 'ffffffffffffff', 'ddff', 'dfgf', 'ffgfg', 'dffffffffffff', 1239938764, 'ffffffffffffffff', 'sdffffggggg', 2),
+(12, 'rejjjjjjjjjerrrej', 'ezkkjjrz', 'ejjddjjdj', 'dsjjsdjsjds', ',djjdsjdjdsjj', 'nfjjhfjhfh', 'jjhhfhfhf', 'd,jjjsjfhnn', ',jfhdfhfh', 1240220865, 'dshdshhds', 'hxwcghdhchchhc', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pattern_actors`
+--
+
+CREATE TABLE IF NOT EXISTS `pattern_actors` (
+  `pattern_actors_id` int(11) NOT NULL auto_increment,
+  `pattern_id` int(1) NOT NULL,
+  PRIMARY KEY  (`pattern_actors_id`,`pattern_id`),
+  KEY `pattern_id` (`pattern_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `pattern_actors`
+--
+
+INSERT INTO `pattern_actors` (`pattern_actors_id`, `pattern_id`) VALUES
+(1, 2),
+(1, 4),
+(1, 5),
+(2, 5),
+(3, 5),
+(2, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12),
+(2, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pattern_autors`
+--
+
+CREATE TABLE IF NOT EXISTS `pattern_autors` (
+  `pattern_autors_id` int(11) NOT NULL auto_increment,
+  `pattern_id` int(1) NOT NULL,
+  PRIMARY KEY  (`pattern_autors_id`,`pattern_id`),
+  KEY `pattern_id` (`pattern_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `pattern_autors`
+--
+
+INSERT INTO `pattern_autors` (`pattern_autors_id`, `pattern_id`) VALUES
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pattern_category`
+--
+
+CREATE TABLE IF NOT EXISTS `pattern_category` (
+  `pattern_category_id` int(11) NOT NULL auto_increment,
+  `pattern_id` int(1) NOT NULL,
+  PRIMARY KEY  (`pattern_category_id`,`pattern_id`),
+  KEY `pattern_id` (`pattern_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `pattern_category`
+--
+
+INSERT INTO `pattern_category` (`pattern_category_id`, `pattern_id`) VALUES
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pattern_relationShip`
+--
+
+CREATE TABLE IF NOT EXISTS `pattern_relationShip` (
+  `pattern_relationShip_id` int(11) NOT NULL auto_increment,
+  `pattern_relationShip_name` varchar(30) NOT NULL,
+  PRIMARY KEY  (`pattern_relationShip_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `pattern_relationShip`
+--
+
+INSERT INTO `pattern_relationShip` (`pattern_relationShip_id`, `pattern_relationShip_name`) VALUES
+(1, 'most general'),
+(2, 'moduled by'),
+(3, 'Instantiated by'),
+(4, 'Incompatible');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pattern_situation`
+--
+
+CREATE TABLE IF NOT EXISTS `pattern_situation` (
+  `pattern_situation_id` int(11) NOT NULL auto_increment,
+  `pattern_id` int(1) NOT NULL,
+  PRIMARY KEY  (`pattern_situation_id`,`pattern_id`),
+  KEY `pattern_id` (`pattern_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `pattern_situation`
+--
+
+INSERT INTO `pattern_situation` (`pattern_situation_id`, `pattern_id`) VALUES
+(1, 2),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pattern_solution_objective`
+--
+
+CREATE TABLE IF NOT EXISTS `pattern_solution_objective` (
+  `solution_objective` int(11) NOT NULL,
+  `pattern` int(1) NOT NULL,
+  PRIMARY KEY  (`solution_objective`,`pattern`),
+  KEY `pattern` (`pattern`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `pattern_solution_objective`
+--
+
+INSERT INTO `pattern_solution_objective` (`solution_objective`, `pattern`) VALUES
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pattern_system`
+--
+
+CREATE TABLE IF NOT EXISTS `pattern_system` (
+  `pattern_system_id` int(11) NOT NULL auto_increment,
+  `pattern_id` int(1) NOT NULL,
+  PRIMARY KEY  (`pattern_system_id`,`pattern_id`),
+  KEY `pattern_id` (`pattern_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `pattern_system`
+--
+
+INSERT INTO `pattern_system` (`pattern_system_id`, `pattern_id`) VALUES
+(1, 2),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pattern_tracking_focus`
+--
+
+CREATE TABLE IF NOT EXISTS `pattern_tracking_focus` (
+  `tracking_focus` int(11) NOT NULL,
+  `pattern` int(1) NOT NULL,
+  PRIMARY KEY  (`tracking_focus`,`pattern`),
+  KEY `pattern` (`pattern`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `pattern_tracking_focus`
+--
+
+INSERT INTO `pattern_tracking_focus` (`tracking_focus`, `pattern`) VALUES
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `problem_tracking_focus`
+--
+
+CREATE TABLE IF NOT EXISTS `problem_tracking_focus` (
+  `problem_tracking_focus_id` int(11) NOT NULL auto_increment,
+  `problem_tracking_focus_name` varchar(200) NOT NULL,
+  PRIMARY KEY  (`problem_tracking_focus_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `problem_tracking_focus`
+--
+
+INSERT INTO `problem_tracking_focus` (`problem_tracking_focus_id`, `problem_tracking_focus_name`) VALUES
+(1, 'contents/tasks');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `related_pattern`
+--
+
+CREATE TABLE IF NOT EXISTS `related_pattern` (
+  `pattern_id` int(1) NOT NULL,
+  `related_pattern_id` int(1) NOT NULL,
+  `related_pattern_name` varchar(200) default NULL,
+  `pattern_relationShip` int(1) NOT NULL,
+  PRIMARY KEY  (`pattern_id`,`related_pattern_id`),
+  KEY `pattern_relationShip` (`pattern_relationShip`),
+  KEY `related_pattern_id` (`related_pattern_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `related_pattern`
+--
+
+INSERT INTO `related_pattern` (`pattern_id`, `related_pattern_id`, `related_pattern_name`, `pattern_relationShip`) VALUES
+(5, 1, 'Internal', 1),
+(6, 1, '', 4),
+(6, 2, '', 3),
+(7, 1, '', 1),
+(8, 1, '', 4),
+(9, 1, '', 1),
+(10, 10, 'Internal', 2),
+(11, 1, 'Internal', 1),
+(12, 1, 'Internal', 1),
+(12, 3, 'External', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `situation_type`
+--
+
+CREATE TABLE IF NOT EXISTS `situation_type` (
+  `situation_type_id` int(11) NOT NULL auto_increment,
+  `situation_type` varchar(300) NOT NULL,
+  PRIMARY KEY  (`situation_type_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `situation_type`
+--
+
+INSERT INTO `situation_type` (`situation_type_id`, `situation_type`) VALUES
+(1, 'Individual learning');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `solution_objective`
+--
+
+CREATE TABLE IF NOT EXISTS `solution_objective` (
+  `solution_objective_id` int(11) NOT NULL auto_increment,
+  `solution_objective_name` varchar(200) NOT NULL,
+  PRIMARY KEY  (`solution_objective_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `solution_objective`
+--
+
+INSERT INTO `solution_objective` (`solution_objective_id`, `solution_objective_name`) VALUES
+(1, 'Material validation');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `system_type`
+--
+
+CREATE TABLE IF NOT EXISTS `system_type` (
+  `system_type_id` int(11) NOT NULL auto_increment,
+  `system_type` varchar(300) NOT NULL,
+  PRIMARY KEY  (`system_type_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `system_type`
+--
+
+INSERT INTO `system_type` (`system_type_id`, `system_type`) VALUES
+(1, 'Individual learning System');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int(11) NOT NULL auto_increment,
+  `user_login` varchar(30) NOT NULL,
+  `user_email` varchar(50) NOT NULL,
+  `user_password` varchar(30) NOT NULL,
+  `user_group` varchar(30) NOT NULL,
+  PRIMARY KEY  (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_login`, `user_email`, `user_password`, `user_group`) VALUES
+(3, 'bessomba', 'gilbert@yahoo.fr', 'nM6jyJXXpQ==', 'administrator'),
+(4, 'bmgc', 'bmgc@yahoo.fr', 'l9KeyQ==', 'user');
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `pattern_actors`
+--
+ALTER TABLE `pattern_actors`
+  ADD CONSTRAINT `pattern_actors_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
+  ADD CONSTRAINT `pattern_actors_ibfk_2` FOREIGN KEY (`pattern_actors_id`) REFERENCES `actors` (`actors_id`);
+
+--
+-- Contraintes pour la table `pattern_autors`
+--
+ALTER TABLE `pattern_autors`
+  ADD CONSTRAINT `pattern_autors_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
+  ADD CONSTRAINT `pattern_autors_ibfk_2` FOREIGN KEY (`pattern_autors_id`) REFERENCES `autors` (`autors_id`);
+
+--
+-- Contraintes pour la table `pattern_category`
+--
+ALTER TABLE `pattern_category`
+  ADD CONSTRAINT `pattern_category_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
+  ADD CONSTRAINT `pattern_category_ibfk_2` FOREIGN KEY (`pattern_category_id`) REFERENCES `category` (`category_id`);
+
+--
+-- Contraintes pour la table `pattern_situation`
+--
+ALTER TABLE `pattern_situation`
+  ADD CONSTRAINT `pattern_situation_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
+  ADD CONSTRAINT `pattern_situation_ibfk_2` FOREIGN KEY (`pattern_situation_id`) REFERENCES `situation_type` (`situation_type_id`);
+
+--
+-- Contraintes pour la table `pattern_solution_objective`
+--
+ALTER TABLE `pattern_solution_objective`
+  ADD CONSTRAINT `pattern_solution_objective_ibfk_1` FOREIGN KEY (`pattern`) REFERENCES `pattern` (`pattern_id`),
+  ADD CONSTRAINT `pattern_solution_objective_ibfk_2` FOREIGN KEY (`solution_objective`) REFERENCES `solution_objective` (`solution_objective_id`);
+
+--
+-- Contraintes pour la table `pattern_system`
+--
+ALTER TABLE `pattern_system`
+  ADD CONSTRAINT `pattern_system_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
+  ADD CONSTRAINT `pattern_system_ibfk_2` FOREIGN KEY (`pattern_system_id`) REFERENCES `system_type` (`system_type_id`);
+
+--
+-- Contraintes pour la table `pattern_tracking_focus`
+--
+ALTER TABLE `pattern_tracking_focus`
+  ADD CONSTRAINT `pattern_tracking_focus_ibfk_1` FOREIGN KEY (`pattern`) REFERENCES `pattern` (`pattern_id`),
+  ADD CONSTRAINT `pattern_tracking_focus_ibfk_2` FOREIGN KEY (`tracking_focus`) REFERENCES `problem_tracking_focus` (`problem_tracking_focus_id`);
+
+--
+-- Contraintes pour la table `related_pattern`
+--
+ALTER TABLE `related_pattern`
+  ADD CONSTRAINT `related_pattern_ibfk_1` FOREIGN KEY (`pattern_relationShip`) REFERENCES `pattern_relationShip` (`pattern_relationShip_id`),
+  ADD CONSTRAINT `related_pattern_ibfk_2` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
+  ADD CONSTRAINT `related_pattern_ibfk_3` FOREIGN KEY (`related_pattern_id`) REFERENCES `pattern` (`pattern_id`);
