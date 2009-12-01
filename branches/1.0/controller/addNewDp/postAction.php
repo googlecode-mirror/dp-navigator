@@ -93,9 +93,8 @@ $dp->setCreationDate($date);
 }
 
 if(isset($_POST['saveDp'])){
-$dpId = $dp->saveDp();	
-$dp->setId($dpId);
-
+	$dpId = $dp->saveDp();	
+	$dp->setId($dpId);
 }
 
 

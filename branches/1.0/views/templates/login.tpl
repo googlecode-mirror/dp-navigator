@@ -22,8 +22,8 @@
 			  <div align="left"><input value=" Connexion " type="submit" class="button"></div>
 			 </form>          
 			 <div class="barre"></div><br/>
-             <p align="left"><a href="passwordForget.php">Compte ou mot de passe oubli&eacute; ?</a> | <a href="javascript: alert('Aide indisponible !');">Aide</a></p>
-			 <p class="style1" style="text-align: left; font-size: 12pt;"><a href="inscription.php"><strong>Nouveau compte ! </strong></a></p>
+             <p align="left"><a href="passwordForget.php">Compte ou mot de passe oubli&eacute; ?</a> <!--| <a href="javascript: alert('Aide indisponible !');">Aide</a--></p>
+			 <p class="style1" style="text-align: left; font-size: 12pt;"><a href="inscription.php"><strong>Créer un nouveau compte ! </strong></a></p>
   		    </div>
 </td>
 <td valign="top" align="center" width="281">

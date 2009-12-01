@@ -18,11 +18,10 @@ switch($step){
 		$dpActorsToUpdate = $_SESSION['dpToUpdate']['actors_type'];
 		for($a=0;$a<count($dpActors);$a++){
 			for($b=0;$b<count($dpActorsToUpdate);$b++){
-			if (strcmp($dpActors[$a]['actor'],$dpActorsToUpdate[$b])==0){
-			$dpActors[$a]['selected'] = "selected";	
-		
+				if (strcmp($dpActors[$a]['actor'],$dpActorsToUpdate[$b])==0){
+					$dpActors[$a]['selected'] = "selected";			
+				}
 			}
-		}
 		}
 		$dpCategoriesToUpdate = $_SESSION['dpToUpdate']['categories'];
 		$dpCategories = Dp::getAllCategories();

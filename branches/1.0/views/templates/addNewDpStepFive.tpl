@@ -1,5 +1,5 @@
 {include file="thumbIndex.tpl"} 
-<form name="newDp" id="formRelation" action="" method="post">
+<form name="newDp" id="formRelation" action="?step=End" method="post">
 <p>&nbsp;</p>
 <div align="left">
 <table width="530" border="0" id="relation">
