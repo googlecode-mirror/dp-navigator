@@ -74,7 +74,7 @@
     $dpList = Dp::getAllDp();
 	if($dpList == null)
 	{
-		$_SESSION["msgToAllDp"] = "Auncun Design Patterns !";
+		$_SESSION["msgToAllDp"] = "Aucun Design Patterns !";
 	}
 	else
 	{				

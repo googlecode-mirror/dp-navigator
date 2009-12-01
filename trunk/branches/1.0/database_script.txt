@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS `actors` (
 --
 
 INSERT INTO `actors` (`actors_id`, `actors_type`) VALUES
-(1, 'teacher'),
-(2, 'student'),
+(1, 'Teacher'),
+(2, 'Student'),
 (3, 'Instructional designer');
 
 -- --------------------------------------------------------
@@ -244,8 +244,8 @@ CREATE TABLE IF NOT EXISTS `pattern_relationShip` (
 --
 
 INSERT INTO `pattern_relationShip` (`pattern_relationShip_id`, `pattern_relationShip_name`) VALUES
-(1, 'most general'),
-(2, 'moduled by'),
+(1, 'Most general'),
+(2, 'Moduled by'),
 (3, 'Instantiated by'),
 (4, 'Incompatible');
 
@@ -492,7 +492,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`user_id`, `user_login`, `user_email`, `user_password`, `user_group`) VALUES
 (3, 'bessomba', 'gilbert@yahoo.fr', 'nM6jyJXXpQ==', 'administrator'),
-(4, 'bmgc', 'bmgc@yahoo.fr', 'l9KeyQ==', 'user');
+(4, 'bmgc', 'bmgc@yahoo.fr', 'l9KeyQ==', 'user'),
+(5, 'mensonge', 'mensonge@yahoo.fr', 'ocanx5zGoZo=', 'administrator');
+
 
 --
 -- Contraintes pour les tables exportées
@@ -502,55 +504,55 @@ INSERT INTO `user` (`user_id`, `user_login`, `user_email`, `user_password`, `use
 -- Contraintes pour la table `pattern_actors`
 --
 ALTER TABLE `pattern_actors`
-  ADD CONSTRAINT `pattern_actors_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
-  ADD CONSTRAINT `pattern_actors_ibfk_2` FOREIGN KEY (`pattern_actors_id`) REFERENCES `actors` (`actors_id`);
+  ADD CONSTRAINT `pattern_actors_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `pattern_actors_ibfk_2` FOREIGN KEY (`pattern_actors_id`) REFERENCES `actors` (`actors_id`)  ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `pattern_autors`
 --
 ALTER TABLE `pattern_autors`
-  ADD CONSTRAINT `pattern_autors_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
-  ADD CONSTRAINT `pattern_autors_ibfk_2` FOREIGN KEY (`pattern_autors_id`) REFERENCES `autors` (`autors_id`);
+  ADD CONSTRAINT `pattern_autors_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `pattern_autors_ibfk_2` FOREIGN KEY (`pattern_autors_id`) REFERENCES `autors` (`autors_id`)  ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `pattern_category`
 --
 ALTER TABLE `pattern_category`
-  ADD CONSTRAINT `pattern_category_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
-  ADD CONSTRAINT `pattern_category_ibfk_2` FOREIGN KEY (`pattern_category_id`) REFERENCES `category` (`category_id`);
+  ADD CONSTRAINT `pattern_category_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `pattern_category_ibfk_2` FOREIGN KEY (`pattern_category_id`) REFERENCES `category` (`category_id`)  ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `pattern_situation`
 --
 ALTER TABLE `pattern_situation`
-  ADD CONSTRAINT `pattern_situation_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
-  ADD CONSTRAINT `pattern_situation_ibfk_2` FOREIGN KEY (`pattern_situation_id`) REFERENCES `situation_type` (`situation_type_id`);
+  ADD CONSTRAINT `pattern_situation_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `pattern_situation_ibfk_2` FOREIGN KEY (`pattern_situation_id`) REFERENCES `situation_type` (`situation_type_id`)  ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `pattern_solution_objective`
 --
 ALTER TABLE `pattern_solution_objective`
-  ADD CONSTRAINT `pattern_solution_objective_ibfk_1` FOREIGN KEY (`pattern`) REFERENCES `pattern` (`pattern_id`),
-  ADD CONSTRAINT `pattern_solution_objective_ibfk_2` FOREIGN KEY (`solution_objective`) REFERENCES `solution_objective` (`solution_objective_id`);
+  ADD CONSTRAINT `pattern_solution_objective_ibfk_1` FOREIGN KEY (`pattern`) REFERENCES `pattern` (`pattern_id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `pattern_solution_objective_ibfk_2` FOREIGN KEY (`solution_objective`) REFERENCES `solution_objective` (`solution_objective_id`)  ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `pattern_system`
 --
 ALTER TABLE `pattern_system`
-  ADD CONSTRAINT `pattern_system_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
-  ADD CONSTRAINT `pattern_system_ibfk_2` FOREIGN KEY (`pattern_system_id`) REFERENCES `system_type` (`system_type_id`);
+  ADD CONSTRAINT `pattern_system_ibfk_1` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `pattern_system_ibfk_2` FOREIGN KEY (`pattern_system_id`) REFERENCES `system_type` (`system_type_id`)  ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `pattern_tracking_focus`
 --
 ALTER TABLE `pattern_tracking_focus`
-  ADD CONSTRAINT `pattern_tracking_focus_ibfk_1` FOREIGN KEY (`pattern`) REFERENCES `pattern` (`pattern_id`),
-  ADD CONSTRAINT `pattern_tracking_focus_ibfk_2` FOREIGN KEY (`tracking_focus`) REFERENCES `problem_tracking_focus` (`problem_tracking_focus_id`);
+  ADD CONSTRAINT `pattern_tracking_focus_ibfk_1` FOREIGN KEY (`pattern`) REFERENCES `pattern` (`pattern_id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `pattern_tracking_focus_ibfk_2` FOREIGN KEY (`tracking_focus`) REFERENCES `problem_tracking_focus` (`problem_tracking_focus_id`)  ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `related_pattern`
 --
 ALTER TABLE `related_pattern`
-  ADD CONSTRAINT `related_pattern_ibfk_1` FOREIGN KEY (`pattern_relationShip`) REFERENCES `pattern_relationShip` (`pattern_relationShip_id`),
-  ADD CONSTRAINT `related_pattern_ibfk_2` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`),
-  ADD CONSTRAINT `related_pattern_ibfk_3` FOREIGN KEY (`related_pattern_id`) REFERENCES `pattern` (`pattern_id`);
+  ADD CONSTRAINT `related_pattern_ibfk_1` FOREIGN KEY (`pattern_relationShip`) REFERENCES `pattern_relationShip` (`pattern_relationShip_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `related_pattern_ibfk_2` FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`)  ON DELETE CASCADE,
+  ADD CONSTRAINT `related_pattern_ibfk_3` FOREIGN KEY (`related_pattern_id`) REFERENCES `pattern` (`pattern_id`)  ON DELETE CASCADE;

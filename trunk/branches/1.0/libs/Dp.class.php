@@ -1162,6 +1162,7 @@ class Dp{
 			$dp = null;
 			return $dp;
 		}else{
+
 			$row = $db->nextLine($resultSet);
 			$dp['pattern_id'] = $row["pattern_id"];
 			$dp['pattern_name'] = $row["pattern_name"];
@@ -1175,7 +1176,7 @@ class Dp{
 			$dp['pattern_methods'] = $row["pattern_solution_methods"];
 			$dp['pattern_creationDate'] = $row["pattern_creationDate"];
 			$dp['pattern_desc'] = $row["pattern_desc"];
-			$dp['pattern_biblio'] = $row["pattern_bibio"];
+			$dp['pattern_biblio'] = $row["pattern_biblio"];
 			$dp['pattern_creator'] = $row["pattern_creator"];
 			//RECUPERE LES CATEGORIES DE CHAQUE DP
 			$queryCategory= "select category_name from category c, pattern_category pc where c.category_id = pc.pattern_category_id and pc.pattern_id = '".$id."'" ;
@@ -1268,7 +1269,7 @@ class Dp{
 					$resultAutor =  $db->execQuery($queryAutor);
 					$numRowsAutor = $db->resultSetNumRows($resultAutor);
 					if ($numRowsAutor == 0){
-						$dp[$i]['autors_name'] = "";
+						$dp['autors_name'] = "";
 					}else{
 						$j = 0;
 						while ($rowAutor = $db->nextLine($resultAutor)){
@@ -1613,8 +1614,21 @@ class Dp{
 		exec("circo -T$type -o$path/$file.$type $file.dot");
 		$files[0] = $file.".".$type;
 
-return $files;
+		return $files;
 
+	}
+
+
+	static public function deleteDP($id)
+	{
+		$db = self::getDb();
+
+		// delete dp and related things (thanks to MySQL ON CASCADE)
+		$dp = self::getDpById($id);
+
+
+		$query = "delete from pattern where pattern_id='".$id."'";
+		$resultSet = $db->execQuery($query);
 	}
 
 }

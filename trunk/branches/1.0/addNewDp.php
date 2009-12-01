@@ -4,7 +4,8 @@ require_once "core.php";
 if (array_key_exists('step',$_GET)){
 	$step = $_GET['step'];
 } else {	
-	$step = "One";		
+	$step = "One";
+	$_SESSION['dp'] = new dp();
 }
 
 

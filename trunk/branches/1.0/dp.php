@@ -10,10 +10,20 @@ if($_SESSION["log"]== true)
 		case 'dpList':
 		$smarty->assign("title","Gestionnaire des Design Patterns");
 		$smarty->assign("menu",$_SESSION['user']->getGroup()); 
-		$smarty->assign("content",$menu); 
+		$smarty->assign("content","dpList"); 
 		$smarty->assign("dpList",$_SESSION['dpList']);
 		$smarty->assign("size",$_SESSION['size']);
-		break;							
+		break;
+		
+		case 'dpDelete':
+		$dpId = $_GET["id"];
+		Dp::deleteDP($dpId);
+		$smarty->assign("title","Gestionnaire des Design Patterns");
+		$smarty->assign("menu",$_SESSION['user']->getGroup()); 
+		$smarty->assign("content","dpList"); 
+		$smarty->assign("dpList",Dp::getAllDp());
+		$smarty->assign("size",$_SESSION['size']);
+		break;	
 	}
 	
   	$smarty->display('homePage.tpl');	
