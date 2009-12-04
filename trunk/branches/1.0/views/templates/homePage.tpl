@@ -27,13 +27,13 @@
               <td width="19%" height="60" align="center" valign="top">
 			  <table width="168" border="0" cellspacing="0" cellpadding="0" class="menugauchehaut">
   <tr>
-    <td align="left" height="20">&nbsp;&nbsp;&nbsp;Recherche rapide</td>
+    <td align="left" height="20">&nbsp;&nbsp;&nbsp;Quick search</td>
   </tr>
   <tr>
     <td align="center" valign="middle" height="30">
 	<div class="c_hf">
-	<input  id="query"name="query" class="c_ml" style="width:112px;" type="text">
-	<a id="queryLink" class="glyph"><span><img src="{$IMAGE_PATH}/icons/search_icon.png" title="Rechercher"></span></a>
+	<input  id="query"name="query" class="c_ml" style="width:112px;" type="text" title="Search for a DP">
+	<a id="queryLink" class="glyph"><span><img src="{$IMAGE_PATH}/icons/search_icon.png" title="Search"></span></a>
 	</div>
 	
 	</td>
@@ -42,7 +42,7 @@
     <td>&nbsp;</td>
   </tr>
 </table>
-	<table width="168" border="0" cellspacing="0" cellpadding="0" class="menugauchebas">
+<!--table width="168" border="0" cellspacing="0" cellpadding="0" class="menugauchebas">
   <tr>
     <td>&nbsp;</td>
   </tr>
@@ -112,7 +112,7 @@
   <tr>
     <td>&nbsp;</td>
   </tr>
-</table>
+</table-->
 
 			  </td>
               <td width="81%" align="left" valign="top">

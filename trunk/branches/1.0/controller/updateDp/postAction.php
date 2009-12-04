@@ -16,22 +16,25 @@ if(!is_object($_SESSION["dp"])){
 }
 if(array_key_exists('dpName',$_POST)){
 	if (!empty($_POST['dpName'])){
-		$dpId = $_POST['dpId'];
-		$dp->setId($_POST['dpId']);
+		/*$dpId = $_GET['dpId'];
+		$dp->setId($_POST['dpId']);*/
 		$dpName = $_POST['dpName'];
 		$dp->setName($dpName);
 		$dpAbstract = $_POST['dpAbstract'];
 		$dp->setAbstract($dpAbstract);
 		
+		print_r($_POST);
+
 		$dpCategory = (!empty($_POST['dpCategory'])?$_POST['dpCategory']:array());
-		$dp->setCategory(array_diff($_SESSION['dpToUpdate']['categories'],$dpCategory));
+		//$dp->setCategory(array_diff($_SESSION['dpToUpdate']['categories'],$dpCategory));
+		$dp->setCategory($dpCategory);
 		
-		$dpSystem = (!empty($_POST['dpSystem'])?$_POST['dpSystem']:array());
+		/*$dpSystem = (!empty($_POST['dpSystem'])?$_POST['dpSystem']:array());
 		$dp->setSystem(array_diff($_SESSION['dpToUpdate']['system_type'],$dpSystem));
 		$dpSituation = (!empty($_POST['dpSituation'])?$_POST['dpSituation']:array());
 		$dp->setSituation(array_diff($_SESSION['dpToUpdate']['situation_type'],$dpSituation));
 		$dpActors = (!empty($_POST['dpActors'])?$_POST['dpActors']:array());
-		$dp->setActors(array_diff($_SESSION['dpToUpdate']['actors_type'],$dpActors));
+		$dp->setActors(array_diff($_SESSION['dpToUpdate']['actors_type'],$dpActors));*/
 		$dpDescription = $_POST['dpDescription'];
 		$dp->setDescription($dpDescription);
 	}
@@ -71,6 +74,18 @@ if(array_key_exists('dpAutors',$_POST)){
 		$dpBibliographic = $_POST['dpBibliographic'];
 		$dp->setBibliographic($dpBibliographic);
 		}
+}
+
+if(array_key_exists('pattern',$_POST)){
+	if (!empty($_POST['pattern'])){
+		$dpRelated = $_POST['pattern'];
+		$relatedPatterns[0]['relatedPattern'] = $dpRelated;
+		$dpRelationType = $_POST['relationType'];
+		$relatedPatterns[0]['relationType'] = $dpRelationType;
+		$dpRelationShip = $_POST['dpRelationShip'];
+		$relatedPatterns[0]['relationShip'] = $dpRelationShip;
+		$dp->setRelatedPatterns($relatedPatterns);
+	}
 }
 
 if(isset($_POST['updateDp'])){

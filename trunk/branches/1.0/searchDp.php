@@ -37,14 +37,24 @@ if($_SESSION["log"]== true)
 							$smarty->assign("dpList",$_SESSION['dpList']);
 							$smarty->assign("content",$menu);
 							break;	
- 		case 'viewDp':$smarty->assign("title","Description générale du DP ");
+ 		case 'viewDp':$smarty->assign("title","DP global view ");
+
+
 							$dpList = $_SESSION['dpList'];
 							$dpId = $_GET["dpId"];
-							$_SESSION['dp'] = Dp::viewDp($dpId,$dpList);
+							$dp = Dp::getDpById($dpId);
+							$dp['pattern_creationDate'] = date('d/m/y', $dp['pattern_creationDate']);
+
+							//print_r($dp);
+
+							//$_SESSION['dp'] = Dp::viewDp($dpId,$dpList);
+							$_SESSION['dp'] = Dp::viewDpById($dpId);											
+
  							$smarty->assign("menu",$_SESSION['user']->getGroup()); 
 							$smarty->assign("userId",$_SESSION['user']->getId());
 							$smarty->assign("content",$menu); 
-							$smarty->assign("dp",$_SESSION['dp']);
+							//$smarty->assign("dp",$_SESSION['dp']);
+							$smarty->assign("dp",$dp);
 							break;															
 	}
 	

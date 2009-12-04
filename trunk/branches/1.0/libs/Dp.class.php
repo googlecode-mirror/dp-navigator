@@ -271,6 +271,7 @@ class Dp{
 		$this->solution."','".$this->solutionDesc."','".$this->solutionDisc."','".
 		$this->solutionIndicators."','".$this->solutionMethods."','".
 		$this->creationDate."','".$this->description."','".$this->bibliographic."','".$this->creator."')";
+
 		$flag = $db->execQuery($query);
 		$this->id = $db->lastInsertId();
 
@@ -287,9 +288,15 @@ class Dp{
 		}
 
 		$numOfCategories = count($this->category);
+		echo "numcat.$numOfCategories";
 		for ($a = 0; $a<$numOfCategories; $a++){
 			$query = "INSERT INTO pattern_category values('".$this->category[$a]."','".$this->id."')";
+			echo $query;
+			//try{
 			$db->execQuery($query);
+			//}catch(Exception $e){
+			//	echo $query."excep";
+			//}
 		}
 
 
@@ -1060,7 +1067,8 @@ class Dp{
 		for($nb =0; $nb <= $total; $nb++)
 		{
 			if ($dpList[$nb]['pattern_id'] == $dpId)
-			{
+			{			
+
 				$dp['general_id'] = $dpList[$nb]['pattern_id'];
 				$dp['general_name'] = $dpList[$nb]['pattern_name'];
 				$dp['general_abstract'] = $dpList[$nb]['pattern_abstract'];
@@ -1094,6 +1102,50 @@ class Dp{
 				exit;
 			}
 		}
+	}
+
+	static public function viewDpById($dpId){
+		$outDp = array();
+		$dp = self::getDpById($dpId);
+
+		$outDp['general_id'] = $dp['pattern_id'];
+		$outDp['general_name'] = $dp['pattern_name'];
+		$outDp['general_abstract'] = $dp['pattern_abstract'];
+
+		$outDp['general_category'] = '';		
+		if(isset($dp['categories']) && count($dp['categories'])>1) {
+			foreach($dp['categories'] as $cat) {
+				$outDp['general_category'].= $cat.' - ';
+			}
+		}
+
+		$outDp['general_system'] = $dp['system_type'];
+		$outDp['general_situation'] = $dp['situation_type'];
+		$outDp['general_actor'] = $dp['actors_type'];
+		$outDp['general_description'] = $dp['pattern_desc'];
+
+		$outDp['problem_statement'] = $dp['pattern_problem_statement'];
+		//$outDp['problem_focus'] = $dp['problem_trackfocus'];
+		$outDp['problem_analysis'] = $dp['pattern_problem_analysis'];
+
+		$outDp['solution_name'] = $dp['pattern_solution_name'];
+		$outDp['solution_objective'] = $dp['objectives'];
+		$outDp['solution_indicator'] = $dp['pattern_indicators'];
+		$outDp['solution_method'] = $dp['pattern_methods'];
+		$outDp['solution_description'] = $dp['pattern_solution_desc'];
+		$outDp['solution_discussion'] = $dp['pattern_solution_discussion'];
+		//$dp['solution_learning'] = $dp['pattern_solution_learning'];
+
+		$outDp['related_pattern'] = $dp['relatedPatterns'];
+
+		$outDp['identification_author'] = $dp['autors_name'];
+		$outDp['identification_date'] = date("d/m/Y", $dp['pattern_creationDate']);
+		$outDp['identification_version_number'] = $dp['pattern_id'];
+		$outDp['identification_version_changes'] = $dp['pattern_id'];
+		$outDp['identification_bibliographic'] = $dp['pattern_biblio'];
+
+		return $outDp;
+
 	}
 
 	//fonction qui affiche les liens premier | précédent | suivant | dernier
