@@ -66,12 +66,14 @@ switch($step){
 		$smarty->assign('pattern',$pattern);
 		$smarty->assign('dpRelationShip',$relationShip);
 		$smarty->assign('patternSaved',$_SESSION['dp']->getName());
-		$smarty->assign('five',$activeMenu);
-		unset($_SESSION['dp']);
+		$smarty->assign('five',$activeMenu);		
 		break;
 	case "End":
+		print_r($_POST);die();
+
 		$dpId = $_SESSION['dp']->getId();
-		Url::relocate("dp.php?menu=dpList");
+		unset($_SESSION['dp']);
+		Url::relocate("searchDp.php?menu=viewDp&dpId=".$dpId);
 		
 			
 }

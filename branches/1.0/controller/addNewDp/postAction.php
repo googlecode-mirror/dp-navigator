@@ -22,49 +22,66 @@ if(array_key_exists('dpName',$_POST)){
 		$dp->setName($dpName);
 		$dpAbstract = $_POST['dpAbstract'];
 		$dp->setAbstract($dpAbstract);
-		$dpCategory = $_POST['dpCategory'];
+		$dpCategory = isset($_POST['dpCategory'])?$_POST['dpCategory']:array();
 		$dp->setCategory($dpCategory);
-		$dpSystem = $_POST['dpSystem'];
-		$dp->setSystem($dpSystem);
-		$dpSituation = $_POST['dpSituation'];
-		$dp->setSituation($dpSituation);
-		$dpActors = $_POST['dpActors'];
-		$dp->setActors($dpActors);
+		//$dpSystem = $_POST['dpSystem'];
+		//$dp->setSystem($dpSystem);
+		//$dpSituation = $_POST['dpSituation'];
+		//$dp->setSituation($dpSituation);
+		//$dpActors = $_POST['dpActors'];
+		//$dp->setActors($dpActors);
 		$dpDescription = $_POST['dpDescription'];
 		$dp->setDescription($dpDescription);
 	}
 
 }
-if(array_key_exists('dpProlem',$_POST)){
+if(array_key_exists('dpProlem',$_POST) || array_key_exists('problemAnalysis',$_POST)){
 	if (!empty($_POST['dpProlem'])){
 		$dpProblem = $_POST['dpProlem'];
 		$dp->setProblem($dpProblem);
 		$dpAnalysis = $_POST['problemAnalysis'];
 		$dp->setAnalysis($dpAnalysis);
-		$dpFocus = $_POST['trackingFocus'];
-		$dp->setFocusTracking($dpFocus);
+		//$dpFocus = $_POST['trackingFocus'];
+		//$dp->setFocusTracking($dpFocus);
 	}
 }
 
 
 
-if(array_key_exists('solutionName',$_POST)){
-	if (!empty($_POST['solutionName'])){
-		$dpSolutionName = $_POST['solutionName'];
+if(array_key_exists('solutionDesc',$_POST)){
+	if (!empty($_POST['solutionDesc'])){
+		/*$dpSolutionName = $_POST['solutionName'];
 		$dp->setSolution($dpSolutionName);
 		$solutionObjective = $_POST['solutionObjective'];
-		$dp->setSolutionObjective($solutionObjective);
+		$dp->setSolutionObjective($solutionObjective);*/
 		$solutionDesc = $_POST['solutionDesc'];
 		$dp->setSolutionDesc($solutionDesc);
+	}
+	if (!empty($_POST['solutionDisc'])){
 		$solutionDisc = $_POST['solutionDisc'];
 		$dp->setSolutionDisc($solutionDisc);
-		$solutionIndicators = $_POST['solutionIndicators'];
+		/*$solutionIndicators = $_POST['solutionIndicators'];
 		$dp->setSolutionIndicators($solutionIndicators);
 		$solutionMethods = $_POST['solutionMethods'];
-		$dp->setSolutionMethods($solutionMethods);
+		$dp->setSolutionMethods($solutionMethods);*/
 	}
 }
 
+print_r($_POST);
+if(array_key_exists('dpBibliographic',$_POST)){
+	if (!empty($_POST['dpAutors'])){
+		$dpAutors = $_POST['dpAutors'];
+		$dp->setAutors($dpAutors);
+	}
+	if (!empty($_POST['dpBibliographic'])){
+		$dpBibiographic = $_POST['dpBibliographic'];
+		$dp->setBibliographic($dpBibiographic);
+	}
+	$dpCreator = $_POST['user'];
+	$dp->setCreator($dpCreator);
+	$date = time();
+	$dp->setCreationDate($date);
+}
 
 if(array_key_exists('pattern',$_POST)){
 	if (!empty($_POST['pattern'])){
@@ -79,18 +96,6 @@ if(array_key_exists('pattern',$_POST)){
 }
 
 
-if(array_key_exists('dpAutors',$_POST)){
-if (!empty($_POST['dpAutors'])){
-$dpAutors = $_POST['dpAutors'];
-$dp->setAutors($dpAutors);
-$dpBibiographic = $_POST['dpBibliographic'];
-$dp->setBibliographic($dpBibiographic);
-$dpCreator = $_POST['user'];
-$dp->setCreator($dpCreator);
-$date = time();
-$dp->setCreationDate($date);
-}
-}
 
 if(isset($_POST['saveDp'])){
 	$dpId = $dp->saveDp();	
