@@ -1,0 +1,53 @@
+# # Populate this file with data to be loaded by your ORM's *:data-load task.
+# # You can create multiple files in this directory (i.e. 010_users.yml,
+# # 020_articles.yml, etc) which will be loaded in alphabetical order.
+# # 
+# # See documentation for your ORM's *:data-load task for more information.
+# 
+# User:
+#   fabien:
+#     username: fabien
+#     password: changeme
+#     name:     Fabien Potencier
+#     email:    fabien.potencier@symfony-project.com
+#   kris:
+#     username: Kris.Wallsmith
+#     password: changeme
+#     name:     Kris Wallsmith
+#     email:    kris.wallsmith@symfony-project.com
+
+
+Dp:
+  Serious Game:
+    name: Serious Game
+    confidence: 1 
+    alias: 
+    synopsis: 
+    context: |
+      ... vous débutez un projet à visée informative ou pédagogique, dans lequel les objectifs impliquent des types d'interactions d'une certaine complexité et/ou de prendre particulièrement en compte la motivation des utilisateurs.
+    problem: |
+      Pour certains projets de e-learning, il est important de soutenir la motivation des utilisateurs et/ou proposer des interactions plus complexes que la réponse à des quizz. Néanmoins, l'introduction de nouveaux types d'interactions et chercher à motiver fortement les utilisateurs avec des contenus pédagogiques rend compliqué la conception d'un module e-learning.
+    problem_details: |
+      Les modules de e-learning classiques emploient généralement des interactions simples. L'utilisateur suit une présentation (passe aux pages suivantes, regarde des animations) et parfois répond à des quizz (METTRE EXEMPLE). Ces interactions simples sont adaptés à des publics ayant de faibles compétences en informatique et qui ne sauront peut-être pas maîtriser des environnements aux interactions plus riches.
+
+      De plus, si la motivation ne provient pas de l'apprentissage en lui-même, employer des facteurs externes de motivation comme des aspects ludiques ajoute des éléments possibles de complexité à la conception.
+    solution: |
+      Concevez un Serious Game s'inspirant des techniques des jeux vidéos pour gérer et proposer des interactions avancées, et s'inspirant des modèles ludiques des jeux vidéos pour soutenir la motivation lors de l'apprentissage.
+    solution_details:  |
+      Ces dernières années, l'usage des jeux vidéos s'est diffusé avec notamment le succès de console grand public comme les Nintendo Wii et DS. Ces nouvelles pratiques permettent à de plus en plus d'individus de découvrir et maîtriser des formes d'interactivités avancées.
+
+      De plus, la conception de jeux vidéos -- même si elle contient une part importante de créativité -- se base sur des expériences passées, des recettes et parfois des principes ayant fait leurs preuves pour gérer les aspects ludiques.
+    literature: |
+      Thèse Alvarez
+    notes:
+#  relations:
+#    RelatedTo: [sg1]
+  
+  Boss:
+    name: Boss
+
+#DpRelation:
+#  sg1:
+#    source_id: Serious Game
+#    target_id: Boss
+#    type_id: instanciates
