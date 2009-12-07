@@ -19,7 +19,7 @@
 
 
 RelationType:
-  1:
-    name: More general than
-  2:
-    name: Incompatible with
+  instanciates:
+    name: instanciates
+  conflicting:
+    name: conflicting with
