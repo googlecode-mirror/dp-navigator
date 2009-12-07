@@ -1,0 +1,32 @@
+Dp:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
+    confidence: { type:enum, values:[0,1,2]}
+    alias: string()
+    synopsis: string()
+    context: string()
+    problem: string()
+    problem_details: string()
+    solution: string()
+    solution_details: string()
+    literature: string()
+    notes: string()
+  relations:
+    RelatedTo: {class: Dp, local:source_id, foreign:target_id, refClass:DpRelation, foreignAlias:PointedBy, onDelete: CASCADE}
+
+RelationType:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
+  relations:
+    DpRelation: {type: many, class:DpRelation, local:id, foreign:type_id, onDelete: CASCADE}
+
+DpRelation:
+  columns:
+    source_id: {type: integer, primary:true}
+    target_id: {type: integer, primary:true}
+    type_id: {type: integer}
+  relations:
+    RelationType: {local: type_id, foreign:id}
+      
