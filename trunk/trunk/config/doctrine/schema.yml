@@ -13,14 +13,15 @@ Dp:
     literature: string()
     notes: string()
   relations:
-    RelatedTo: {class: Dp, local:source_id, foreign:target_id, refClass:DpRelation, foreignAlias:PointedBy, onDelete: CASCADE}
+#    RelationsIn: {type:many, class:DpRelation, local:id, foreign:target_id}
+    RelationsOut: {type:many, class:DpRelation, local:id, foreign:source_id, foreignAlias:RelationsIn}
 
 RelationType:
   actAs: { Timestampable: ~ }
   columns:
     name: { type: string(255), notnull: true, unique: true }
-  relations:
-    DpRelation: {type: many, class:DpRelation, local:id, foreign:type_id, onDelete: CASCADE}
+#  relations:
+#    DpRelation: {type: many, local:id, foreign:type_id}
 
 DpRelation:
   columns:
@@ -28,5 +29,7 @@ DpRelation:
     target_id: {type: integer, primary:true}
     type_id: {type: integer}
   relations:
-    RelationType: {local: type_id, foreign:id}
+    Source: {local:source_id, foreign:id, class:Dp, onDelete: CASCADE}
+    Target: {local:target_id, foreign:id, class:Dp, onDelete: CASCADE}
+    Type: {local:type_id, foreign:id, class:RelationType, onDelete: CASCADE}
       
