@@ -18,8 +18,8 @@
 
 
 Dp:
-  Serious Game:
-    name: Serious Game
+  SeriousGame:
+    name: 'Serious Game'
     confidence: 1 
     alias: 
     synopsis: 
@@ -40,14 +40,25 @@ Dp:
     literature: |
       Thèse Alvarez
     notes:
-#  relations:
-#    RelatedTo: [sg1]
   
   Boss:
     name: Boss
 
-#DpRelation:
-#  sg1:
-#    source_id: Serious Game
-#    target_id: Boss
-#    type_id: instanciates
+  InSpace:
+    name: In Space!
+
+DpRelation:
+  sg1:
+    Source: SeriousGame
+    Target: Boss
+    Type: Instanciates
+  sg2:
+    Source: SeriousGame
+    Target: InSpace
+    Type: Instanciates
+
+RelationType:
+  Instanciates:
+    name: instanciates
+  Conflicting:
+    name: conflicting with

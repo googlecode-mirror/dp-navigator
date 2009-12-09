@@ -16,10 +16,3 @@
 #     name:     Kris Wallsmith
 #     email:    kris.wallsmith@symfony-project.com
 
-
-
-RelationType:
-  instanciates:
-    name: instanciates
-  conflicting:
-    name: conflicting with

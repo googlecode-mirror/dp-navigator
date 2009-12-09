@@ -9,6 +9,9 @@
     <?php include_javascripts() ?>
   </head>
   <body>
+    <div id="menu">
+	  <?php echo link_to('Manage DP', 'dp/index');?> - <?php echo link_to('Manage RelationType', 'relationtype/index');?>
+	</div>
     <?php echo $sf_content ?>
   </body>
 </html>
