@@ -10,7 +10,7 @@
   </head>
   <body>
     <div id="menu">
-	  <?php echo link_to('Manage DP', 'dp/index');?> - <?php echo link_to('Manage RelationType', 'relationtype/index');?>
+	  <?php echo link_to('Manage DP', 'dp/index');?> [<?php echo link_to('New', 'dp/new');?>, <?php echo link_to('View All', 'dp/viewAll');?>] - <?php echo link_to('Manage RelationType', 'relationtype/index');?>
 	</div>
     <?php echo $sf_content ?>
   </body>
