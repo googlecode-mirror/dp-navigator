@@ -82,8 +82,8 @@ class dpActions extends sfActions
     }
   }
 
-  /* View all management */
-  public function executeViewAll(sfWebRequest $request)
+  /* Graph management */
+  public function executeGraph(sfWebRequest $request)
   {
 	/* Write XML file*/
 	$dps = Doctrine::getTable('Dp')
