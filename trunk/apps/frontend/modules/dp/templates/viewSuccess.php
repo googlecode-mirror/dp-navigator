@@ -86,3 +86,4 @@
   </table>
   <?php endif; ?>
 
+<?php echo link_to('Voir dans le graphe', 'dp/graph?id='.$dp->getId()) ?>
