@@ -13,7 +13,7 @@
     <tr>
       <td><?php echo $dp->getProblem() ?></td>
       <td><?php echo $dp->getSolution() ?></td>
-      <td><a href="<?php echo url_for('dp/edit?id='.$dp->getId()) ?>"><?php echo $dp->getName() ?></a></td>
+      <td><a href="<?php echo url_for('dp/view?id='.$dp->getId()) ?>"><?php echo $dp->getName() ?></a></td>
     </tr>
     <?php endforeach; ?>
   </tbody>
