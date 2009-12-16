@@ -4,6 +4,7 @@ Dp:
     name: { type: string(255), notnull: true, unique: true }
     confidence: { type:enum, values:[0,1,2]}
     alias: string()
+    category_id: integer
     synopsis: string()
     context: string()
     problem: string()
@@ -11,9 +12,9 @@ Dp:
     solution: string()
     solution_details: string()
     literature: string()
-    notes: string()
+    notes: string()    
   relations:
-#    RelationsIn: {type:many, class:DpRelation, local:id, foreign:target_id}
+    Category: {local:category_id, foreign:id, onDelete: SET NULL}
     RelationsOut: {type:many, class:DpRelation, local:id, foreign:source_id, foreignAlias:RelationsIn}
 
 RelationType:
@@ -32,4 +33,10 @@ DpRelation:
     Source: {local:source_id, foreign:id, class:Dp, onDelete: CASCADE}
     Target: {local:target_id, foreign:id, class:Dp, onDelete: CASCADE}
     Type: {local:type_id, foreign:id, class:RelationType, onDelete: CASCADE}
-      
+
+Category:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(600), notnull: true }
+  relations:
+    Dps: {type:many, class: Dp, local:id, foreign:category_id}
