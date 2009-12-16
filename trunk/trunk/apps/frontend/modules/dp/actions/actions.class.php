@@ -37,9 +37,6 @@ class dpActions extends sfActions
   {
     $this->forward404Unless($dp = Doctrine::getTable('Dp')->find(array($request->getParameter('id'))), sprintf('Object dp does not exist (%s).', $request->getParameter('id')));
 	$this->dp = $dp;
-
-	// fill an array with data necessary to display relations of the dp
-	$this->relationsOut = $dp->getRelationsOut()->getData();
   }
 
   public function executeEdit(sfWebRequest $request)
@@ -89,6 +86,11 @@ class dpActions extends sfActions
       ->createQuery('a')
 	  ->addOrderBy('a.name ASC')
       ->execute();  
+
+	  $this->dpsWithoutCategories = Doctrine::getTable('Dp')
+      ->createQuery('d')
+	  ->where('d.category_id IS NULL')
+      ->execute();
   }
 
   /* Graph management */
@@ -155,13 +157,29 @@ class dpActions extends sfActions
 	
   }
 
+  /* Publish management */
+  public function executePublish(sfWebRequest $request)
+  {
+	$this->categories = Doctrine::getTable('Category')
+      ->createQuery('a')
+	  ->addOrderBy('a.name ASC')
+      ->execute();
+
+	$this->dpsWithoutCategories = Doctrine::getTable('Dp')
+      ->createQuery('d')
+	  ->where('d.category_id IS NULL')
+      ->execute();
+
+    $this->dps = Doctrine::getTable('Dp')
+      ->createQuery('a')
+      ->execute();
+  }
+
   /* Relations management */
 
   public function executeEditRelations(sfWebRequest $request)
   {
     $this->forward404Unless($dp = Doctrine::getTable('Dp')->find(array($request->getParameter('id'))), sprintf('Object dp does not exist (%s).', $request->getParameter('id')));
-
-	// data on dp where to edit relations
 	$this->dp = $dp;
 
 	// fill an array with data necessary to display relations of the dp

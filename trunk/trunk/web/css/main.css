@@ -1,0 +1,14 @@
+
+
+.dp {
+  width: 550px;
+  text-align: justify;
+}
+
+.dp-name, .dp-confidence {
+  font-size:80px;
+}
+
+.dp-problem, .dp-solution {
+  font-weight:bold;
+}
