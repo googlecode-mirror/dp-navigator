@@ -11,5 +11,4 @@
 	width="100%"
 	height="600">
 	</embed></object>
-<?php echo $pagePath;?>
 

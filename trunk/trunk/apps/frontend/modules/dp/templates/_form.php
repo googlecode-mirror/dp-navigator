@@ -42,6 +42,13 @@
         </td>
       </tr>
       <tr>
+        <th><?php echo $form['category_id']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['category_id']->renderError() ?>
+          <?php echo $form['category_id'] ?>
+        </td>
+      </tr>
+      <tr>
         <th><?php echo $form['synopsis']->renderLabel() ?></th>
         <td>
           <?php echo $form['synopsis']->renderError() ?>

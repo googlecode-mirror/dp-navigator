@@ -82,6 +82,15 @@ class dpActions extends sfActions
     }
   }
 
+  /* By Categories management */
+  public function executeByCategories(sfWebRequest $request)
+  {
+	  $this->categories = Doctrine::getTable('Category')
+      ->createQuery('a')
+	  ->addOrderBy('a.name ASC')
+      ->execute();  
+  }
+
   /* Graph management */
   public function executeGraph(sfWebRequest $request)
   {
@@ -89,6 +98,16 @@ class dpActions extends sfActions
 	$this->pagePath = $request->getScriptName(). '/dp';  //TODO: find automatically module and action name and don't always add '/'
 	$this->viewerPath = 'flash/dpViewer.swf';  // must be linked to asset directory (use public_path() in view)
 	$this->xmlPath = 'flash/dps.xml';		   // must be linked to asset directory (use public_path() in view)
+
+	if(!$request->hasParameter('id')){
+	  $firstDp = Doctrine::getTable('Dp')
+      ->createQuery('a')
+	  ->orderBy('a.id ASC')
+	  ->limit(1)
+      ->fetchOne();
+
+	  $this->id = $firstDp->getId();
+	}
 	
 	/* Write XML file*/
 	$dps = Doctrine::getTable('Dp')
@@ -135,7 +154,6 @@ class dpActions extends sfActions
 	$dom->save($this->xmlPath); // save as file 	
 	
   }
-
 
   /* Relations management */
 
