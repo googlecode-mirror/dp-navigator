@@ -85,6 +85,11 @@ class dpActions extends sfActions
   /* Graph management */
   public function executeGraph(sfWebRequest $request)
   {
+	$this->id = $request->getParameter('id');
+	$this->pagePath = $request->getScriptName(). '/dp';  //TODO: find automatically module and action name and don't always add '/'
+	$this->viewerPath = 'flash/dpViewer.swf';  // must be linked to asset directory (use public_path() in view)
+	$this->xmlPath = 'flash/dps.xml';		   // must be linked to asset directory (use public_path() in view)
+	
 	/* Write XML file*/
 	$dps = Doctrine::getTable('Dp')
       ->createQuery('a')
@@ -127,7 +132,7 @@ class dpActions extends sfActions
 	}
 
 	$dom->formatOutput = true;
-	$dom->save('flash/dps.xml'); // save as file 
+	$dom->save($this->xmlPath); // save as file 	
 	
   }
 
