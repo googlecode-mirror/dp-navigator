@@ -1,5 +1,5 @@
 Dp:
-  actAs: { Timestampable: ~ }
+  actAs: { Timestampable: ~ , Versionable: ~}
   columns:
     name: { type: string(255), notnull: true, unique: true }
     confidence: { type:enum, values:[0,1,2]}

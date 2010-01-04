@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Dp filter form base class.
+ * DpVersion filter form base class.
  *
  * @package    dp-navigator
  * @subpackage filter
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 24171 2009-11-19 16:37:50Z Kris.Wallsmith $
  */
-abstract class BaseDpFormFilter extends BaseFormFilterDoctrine
+abstract class BaseDpVersionFormFilter extends BaseFormFilterDoctrine
 {
   public function setup()
   {
@@ -16,7 +16,7 @@ abstract class BaseDpFormFilter extends BaseFormFilterDoctrine
       'name'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'confidence'       => new sfWidgetFormChoice(array('choices' => array('' => '', 0 => 0, 1 => 1, 2 => 2))),
       'alias'            => new sfWidgetFormFilterInput(),
-      'category_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Category'), 'add_empty' => true)),
+      'category_id'      => new sfWidgetFormFilterInput(),
       'synopsis'         => new sfWidgetFormFilterInput(),
       'context'          => new sfWidgetFormFilterInput(),
       'problem'          => new sfWidgetFormFilterInput(),
@@ -27,14 +27,13 @@ abstract class BaseDpFormFilter extends BaseFormFilterDoctrine
       'notes'            => new sfWidgetFormFilterInput(),
       'created_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'updated_at'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'version'          => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'name'             => new sfValidatorPass(array('required' => false)),
       'confidence'       => new sfValidatorChoice(array('required' => false, 'choices' => array(0 => 0, 1 => 1, 2 => 2))),
       'alias'            => new sfValidatorPass(array('required' => false)),
-      'category_id'      => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Category'), 'column' => 'id')),
+      'category_id'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'synopsis'         => new sfValidatorPass(array('required' => false)),
       'context'          => new sfValidatorPass(array('required' => false)),
       'problem'          => new sfValidatorPass(array('required' => false)),
@@ -45,10 +44,9 @@ abstract class BaseDpFormFilter extends BaseFormFilterDoctrine
       'notes'            => new sfValidatorPass(array('required' => false)),
       'created_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'updated_at'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
-      'version'          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
-    $this->widgetSchema->setNameFormat('dp_filters[%s]');
+    $this->widgetSchema->setNameFormat('dp_version_filters[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -59,7 +57,7 @@ abstract class BaseDpFormFilter extends BaseFormFilterDoctrine
 
   public function getModelName()
   {
-    return 'Dp';
+    return 'DpVersion';
   }
 
   public function getFields()
@@ -69,7 +67,7 @@ abstract class BaseDpFormFilter extends BaseFormFilterDoctrine
       'name'             => 'Text',
       'confidence'       => 'Enum',
       'alias'            => 'Text',
-      'category_id'      => 'ForeignKey',
+      'category_id'      => 'Number',
       'synopsis'         => 'Text',
       'context'          => 'Text',
       'problem'          => 'Text',

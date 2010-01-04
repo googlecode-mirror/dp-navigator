@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Dp form base class.
+ * DpVersion form base class.
  *
- * @method Dp getObject() Returns the current form's model object
+ * @method DpVersion getObject() Returns the current form's model object
  *
  * @package    dp-navigator
  * @subpackage form
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 24171 2009-11-19 16:37:50Z Kris.Wallsmith $
  */
-abstract class BaseDpForm extends BaseFormDoctrine
+abstract class BaseDpVersionForm extends BaseFormDoctrine
 {
   public function setup()
   {
@@ -19,7 +19,7 @@ abstract class BaseDpForm extends BaseFormDoctrine
       'name'             => new sfWidgetFormInputText(),
       'confidence'       => new sfWidgetFormChoice(array('choices' => array(0 => 0, 1 => 1, 2 => 2))),
       'alias'            => new sfWidgetFormTextarea(),
-      'category_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Category'), 'add_empty' => true)),
+      'category_id'      => new sfWidgetFormInputText(),
       'synopsis'         => new sfWidgetFormTextarea(),
       'context'          => new sfWidgetFormTextarea(),
       'problem'          => new sfWidgetFormTextarea(),
@@ -30,7 +30,7 @@ abstract class BaseDpForm extends BaseFormDoctrine
       'notes'            => new sfWidgetFormTextarea(),
       'created_at'       => new sfWidgetFormDateTime(),
       'updated_at'       => new sfWidgetFormDateTime(),
-      'version'          => new sfWidgetFormInputText(),
+      'version'          => new sfWidgetFormInputHidden(),
     ));
 
     $this->setValidators(array(
@@ -38,7 +38,7 @@ abstract class BaseDpForm extends BaseFormDoctrine
       'name'             => new sfValidatorString(array('max_length' => 255)),
       'confidence'       => new sfValidatorChoice(array('choices' => array(0 => 0, 1 => 1, 2 => 2), 'required' => false)),
       'alias'            => new sfValidatorString(array('required' => false)),
-      'category_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Category'), 'required' => false)),
+      'category_id'      => new sfValidatorInteger(array('required' => false)),
       'synopsis'         => new sfValidatorString(array('required' => false)),
       'context'          => new sfValidatorString(array('required' => false)),
       'problem'          => new sfValidatorString(array('required' => false)),
@@ -49,14 +49,10 @@ abstract class BaseDpForm extends BaseFormDoctrine
       'notes'            => new sfValidatorString(array('required' => false)),
       'created_at'       => new sfValidatorDateTime(),
       'updated_at'       => new sfValidatorDateTime(),
-      'version'          => new sfValidatorInteger(array('required' => false)),
+      'version'          => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'version', 'required' => false)),
     ));
 
-    $this->validatorSchema->setPostValidator(
-      new sfValidatorDoctrineUnique(array('model' => 'Dp', 'column' => array('name')))
-    );
-
-    $this->widgetSchema->setNameFormat('dp[%s]');
+    $this->widgetSchema->setNameFormat('dp_version[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -67,7 +63,7 @@ abstract class BaseDpForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'Dp';
+    return 'DpVersion';
   }
 
 }
