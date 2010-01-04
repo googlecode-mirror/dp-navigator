@@ -1,14 +1,31 @@
 
 
+.category {
+  margin-top: 25px;
+  border-top: groove 1px black;
+}
+
+.category-name {
+  text-align: right;
+}
+
 .dp {
   width: 550px;
   text-align: justify;
 }
 
 .dp-name, .dp-confidence {
-  font-size:80px;
+  font-size:60px;
 }
 
 .dp-problem, .dp-solution {
   font-weight:bold;
+}
+
+.dp-form textarea, .dp-form td{
+  width: 500px;
+}
+
+.dp-end {
+  text-align: center;
 }

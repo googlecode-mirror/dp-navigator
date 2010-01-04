@@ -1,3 +1,12 @@
+<?php
+/* Parameters:
+  boolean internalLink  = false (default value);     indicates if links must be internal (same page) or external URL
+*/
+if(!isset($internalLink)) {
+	$internalLink = false;
+}
+?>
+
 <table>
   <thead>
     <tr>
@@ -11,7 +20,12 @@
       <td><?php echo $category->getName() ?></td>
       <td>
 	  <?php foreach($category->getDps() as $dp ):?>
-	  <?php echo link_to($dp->getName(), 'dp/view?id='.$dp->getId());?> - 
+	    <?php if($internalLink):?>
+		  <a href="#<?php echo $dp->getName();?>"><?php echo $dp->getName();?></a>
+		<?php else:?>
+	      <?php echo link_to($dp->getName(), 'dp/view?id='.$dp->getId());?>
+		<?php endif;?>
+		 - 
 	  <?php endforeach;?>
 	  </td>
     </tr>

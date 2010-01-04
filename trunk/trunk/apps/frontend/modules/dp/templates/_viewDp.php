@@ -1,10 +1,19 @@
+<?php
+/* Parameters:
+  boolean internalLink  = false (default value);     indicates if links must be internal (same page) or external URL
+*/
+if(!isset($internalLink)) {
+	$internalLink = false;
+}
+?>
+
 <div class="dp">
   <table>
     <tbody>
       <tr>
         <th><?php //echo $form['name']->renderLabel() ?></th>
         <td>
-          <span class="dp-name"><?php echo $dp->getName() ?></span>
+          <a name="<?php echo $dp->getName() ?>"><span class="dp-name"><?php echo $dp->getName() ?></span></a>
 		  <span class="dp-confidence"><?php for($i = 0; $i<(int)$dp->getConfidence(); $i++):?>*<?php endfor; ?></span>
         </td>
       </tr>
@@ -37,37 +46,49 @@
         </td>
       </tr>
 	  <tr>
-	    <td colspan=2>°°°</td>
+	    <td colspan=2></td>
+	  </tr>
+	  <tr>
+	    <td colspan=2 align=center>°°°</td>
+	  </tr>
+	  <tr>
+	    <td colspan=2></td>
 	  </tr>
       <tr>
         <th><?php //echo $form['problem']->renderLabel() ?></th>
         <td>
-          <span class="dp-problem"><?php echo $dp->getProblem() ?></span>
+          <span class="dp-problem"><?php echo nl2br($dp->getProblem()) ?></span>
         </td>
       </tr>
       <tr>
         <th><?php //echo $form['problem_details']->renderLabel() ?></th>
         <td>
-          <span class="dp-problemDetails"><?php echo $dp->getProblemDetails() ?></span>
+          <span class="dp-problemDetails"><?php echo nl2br($dp->getProblemDetails()) ?></span>
         </td>
       </tr>
 	  <tr>
+	    <td colspan=2></td>
+	  </tr>
+	  <tr>
 	    <td colspan=2>Therefore:</td>
+	  </tr>
+	  <tr>
+	    <td colspan=2></td>
 	  </tr>
       <tr>
         <th><?php //echo $form['solution']->renderLabel() ?></th>
         <td>
-          <span class="dp-solution"><?php echo $dp->getSolution() ?></span>
+          <span class="dp-solution"><?php echo nl2br($dp->getSolution()) ?></span>
         </td>
       </tr>
       <tr>
         <th><?php //echo $form['solution_details']->renderLabel() ?></th>
         <td>
-          <span class="dp-solutionDetails"><?php echo $dp->getSolutionDetails() ?></span>
+          <span class="dp-solutionDetails"><?php echo nl2br($dp->getSolutionDetails()) ?></span>
         </td>
       </tr>
 	  <tr>
-	    <td colspan=2>°°°</td>
+	    <td colspan=2 align=center>°°°</td>
 	  </tr>
       <tr>
         <th><?php //echo $form['literature']->renderLabel() ?></th>
@@ -90,8 +111,15 @@
   <table>
     <?php foreach($relationsOut as $rel): ?>
 	<tr>
-		<td></td>
-		<td><?php echo $rel->getType()?> <?php echo link_to($rel->getTarget(), 'dp/view?id='. $rel->getTarget()->getId());?></td>		
+		<td>Relations: </td>
+		<td>
+		  <?php echo $rel->getType()?>
+		  <?php if($internalLink): ?>
+		    <a href="#<?php echo $rel->getTarget()->getName()?>"><?php echo $rel->getTarget();?></a>
+		  <?php else:?>
+		    <?php echo link_to($rel->getTarget(), 'dp/view?id='. $rel->getTarget()->getId());?>
+		  <?php endif;?>
+		</td>		
 	</tr>
 	<?php endforeach; ?>
   </table>
