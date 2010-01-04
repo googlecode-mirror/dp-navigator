@@ -12,8 +12,8 @@
     <div id="menu">
 	  <?php echo link_to('Home', 'dp/home');?>
 	  <?php if ($sf_user->isAuthenticated()): ?>
-	    - Browse [<?php echo link_to('Summary', 'dp/index');?>, <?php echo link_to('By Categories', 'dp/byCategories');?>, <?php echo link_to('Graph', 'dp/graph');?>, <?php echo link_to('In One Page', 'dp/publish');?>]
-		- Edit [<?php echo link_to('New', 'dp/new');?>]	    
+	    - Browse [<?php echo link_to('By Categories', 'dp/byCategories');?>, <?php echo link_to('Graph', 'dp/graph');?>, <?php echo link_to('In One Page', 'dp/publish');?>]
+		- Edit [<?php echo link_to('Summary', 'dp/index');?>, <?php echo link_to('New', 'dp/new');?>]	    
 	    <!-- <?php echo link_to('Manage Relation Types', 'relationtype/index');?>
 	    - <?php echo link_to('Manage Categories', 'category/index');?>-->
 		<?php if ($sf_user->hasCredential('admins')): ?>
