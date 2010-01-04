@@ -13,5 +13,6 @@ class DpForm extends BaseDpForm
   public function configure()
   {
 	  unset($this['created_at'], $this['updated_at']);
+	  $textarea = new sfWidgetFormInputText();
   }
 }
