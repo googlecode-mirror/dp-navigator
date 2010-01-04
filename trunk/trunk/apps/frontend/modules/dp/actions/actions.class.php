@@ -10,6 +10,11 @@
  */
 class dpActions extends sfActions
 {
+  public function executeHome(sfWebRequest $request)
+  {
+    
+  }
+
   public function executeIndex(sfWebRequest $request)
   {
     $this->dps = Doctrine::getTable('Dp')

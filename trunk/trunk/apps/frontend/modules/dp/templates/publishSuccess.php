@@ -1,4 +1,4 @@
-<h1>All Design Patterns</h1>
+<h1>All Design Patterns in One Page</h1>
 
 <a name="top" />
 

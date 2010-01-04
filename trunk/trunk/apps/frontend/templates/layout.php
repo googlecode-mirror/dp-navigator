@@ -10,10 +10,24 @@
   </head>
   <body>
     <div id="menu">
-	  <?php echo link_to('Manage DP', 'dp/index');?> [<?php echo link_to('New', 'dp/new');?>, <?php echo link_to('By Categories', 'dp/byCategories');?>, <?php echo link_to('Graph', 'dp/graph');?>, <?php echo link_to('Publish', 'dp/publish');?> ]
-	  - <?php echo link_to('Manage Relation Types', 'relationtype/index');?>
-	  - <?php echo link_to('Manage Categories', 'category/index');?>
+	  <?php echo link_to('Home', 'dp/home');?>
+	  <?php if ($sf_user->isAuthenticated()): ?>
+	    - Browse [<?php echo link_to('Summary', 'dp/index');?>, <?php echo link_to('By Categories', 'dp/byCategories');?>, <?php echo link_to('Graph', 'dp/graph');?>, <?php echo link_to('In One Page', 'dp/publish');?>]
+		- Edit [<?php echo link_to('New', 'dp/new');?>]	    
+	    <!-- <?php echo link_to('Manage Relation Types', 'relationtype/index');?>
+	    - <?php echo link_to('Manage Categories', 'category/index');?>-->
+		<?php if ($sf_user->hasCredential('admins')): ?>
+	      - <a href="<?php echo public_path('backend.php')?>">Go to Admin Panel</a>
+		<?php endif; ?>
+        - <?php echo link_to('Logout', '@sf_guard_signout') ?>
+	  <?php endif; ?>
 	</div>
+	
+
     <?php echo $sf_content ?>
+
+	<div id="footer">
+	  Propulsed by <a href="http://code.google.com/p/dp-navigator/">DpNavigator</a> designed by MOCAH team (LIP6 Lab)
+	</div>
   </body>
 </html>
