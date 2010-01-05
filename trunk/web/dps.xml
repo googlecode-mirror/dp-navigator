@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Graph>
-  <Node id="9" name="Serious Game" desc="Pour certains projets de e-learning, il est important de soutenir la motivation des utilisateurs et/ou proposer des interactions plus complexes que la r&#xE9;ponse &#xE0; des quizz. N&#xE9;anmoins, l'introduction de nouveaux types d'interactions et chercher &#xE0; motiver fortement les utilisateurs avec des contenus p&#xE9;dagogiques rend compliqu&#xE9; la conception d'un module e-learning.&#10;" nodeColor="0x8F8FFF" nodeSize="12" nodeClass="tree" nodeIcon="2" x="10" y="15"/>
-  <Node id="10" name="Boss" desc="" nodeColor="0x8F8FFF" nodeSize="12" nodeClass="tree" nodeIcon="2" x="10" y="15"/>
-  <Node id="11" name="In Space!" desc="" nodeColor="0x8F8FFF" nodeSize="12" nodeClass="tree" nodeIcon="2" x="10" y="15"/>
-  <Edge fromID="11" toID="9" edgeLabel="conflicting with" color="0x8F8FFF" edgeClass="rain" edgeIcon="Bad"/>
-</Graph>
