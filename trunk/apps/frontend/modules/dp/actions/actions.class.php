@@ -92,10 +92,10 @@ class dpActions extends sfActions
 	  ->addOrderBy('a.name ASC')
       ->execute();  
 
-	  $this->dpsWithoutCategories = Doctrine::getTable('Dp')
-      ->createQuery('d')
-	  ->where('d.category_id IS NULL')
-      ->execute();
+	  $this->dpsWithoutCategories = Doctrine_Query::create()
+      ->from('Dp d')
+      ->where('NOT EXISTS (SELECT d.id FROM DpCategory dc WHERE dc.dp_id = d.id)', 1)
+	  ->execute();
   }
 
   /* Graph management */
@@ -170,15 +170,59 @@ class dpActions extends sfActions
 	  ->addOrderBy('a.name ASC')
       ->execute();
 
-	$this->dpsWithoutCategories = Doctrine::getTable('Dp')
-      ->createQuery('d')
-	  ->where('d.category_id IS NULL')
-      ->execute();
+	$this->dpsWithoutCategories = Doctrine_Query::create()
+      ->from('Dp d')
+      ->where('NOT EXISTS (SELECT d.id FROM DpCategory dc WHERE dc.dp_id = d.id)', 1)
+	  ->execute();
 
     $this->dps = Doctrine::getTable('Dp')
       ->createQuery('a')
       ->execute();
   }
+
+  /* Categories management */
+
+  public function executeEditCategories(sfWebRequest $request)
+  {
+    $this->forward404Unless($dp = Doctrine::getTable('Dp')->find(array($request->getParameter('id'))), sprintf('Object dp does not exist (%s).', $request->getParameter('id')));
+	$this->dp = $dp;
+
+	// fill an array with data necessary to display categories of the dp
+	$this->categories = $dp->getCategories()->getData();
+
+	// form to add a relation
+	$this->form = new NewDpCategoryForm(array('id'=> $dp->getId()));  
+  }
+
+  
+  public function executeCreateCategory(sfWebRequest $request)
+  {	
+    $this->forward404Unless($dp = Doctrine::getTable('Dp')->find(array($request->getParameter('id'))), sprintf('Object dp does not exist (%s).', $request->getParameter('id')));
+	
+	$dr = new DpCategory();
+	$dr->setDpId($request->getParameter('id'));
+	$dr->setCategoryId($request->getParameter('category'));
+	$dr->save();
+
+	$this->redirect('dp/editCategories?id='.$request->getParameter('id'));
+  }
+
+  public function executeDeleteCategory(sfWebRequest $request) {
+	// Find DpCategory (because DpCategory has no id column)
+	$out = explode('-', $request->getParameter('id'));
+	$q = Doctrine::getTable('DpCategory')->createQuery('dc')
+								->where('dc.dp_id=?', $out[0])
+								->andWhere('dc.category_id=?', $out[1]);
+	$this->forward404Unless($dpRelation = $q->fetchOne(), sprintf('Object dpCategory does not exist (%s).', $request->getParameter('id')));
+
+	// Deletion
+	$dpRelation->delete();
+
+	$this->redirect('dp/editCategories?id='.$request->getParameter('id'));
+  
+  }
+
+
 
   /* Relations management */
 
@@ -198,7 +242,7 @@ class dpActions extends sfActions
   {	
     $this->forward404Unless($dp = Doctrine::getTable('Dp')->find(array($request->getParameter('id'))), sprintf('Object dp does not exist (%s).', $request->getParameter('id')));
 	
-	$dr = new DpRelation();//$request->getParameter('id'), $request->getParameter('relation_type'), $request->getParameter('related_dp')
+	$dr = new DpRelation();
 	$dr->setSourceId($request->getParameter('id'));
 	$dr->setTargetId($request->getParameter('related_dp'));
 	$dr->setTypeId($request->getParameter('relation_type'));
@@ -208,7 +252,7 @@ class dpActions extends sfActions
   }
 
   public function executeDeleteRelation(sfWebRequest $request) {
-	// Find DpRelation
+	// Find DpRelation (because DpRelation has no id column)
 	$out = explode('-', $request->getParameter('id'));
 	$q = Doctrine::getTable('DpRelation')->createQuery('dr')
 								->where('dr.source_id=?', $out[0])

@@ -35,7 +35,12 @@ if(!isset($internalLink)) {
 	  <td>Other</td>
 	  <td>
 	  <?php foreach($dpsWithoutCategories as $dp ):?>
-	  <?php echo link_to($dp->getName(), 'dp/view?id='.$dp->getId());?> - 
+	    <?php if($internalLink):?>
+		  <a href="#<?php echo $dp->getName();?>"><?php echo $dp->getName();?></a>
+		<?php else:?>
+	      <?php echo link_to($dp->getName(), 'dp/view?id='.$dp->getId());?>
+		<?php endif;?>
+		 - 
 	  <?php endforeach;?>
 	  </td>
 	</tr>

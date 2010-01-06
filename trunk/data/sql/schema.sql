@@ -1,6 +1,7 @@
 CREATE TABLE dpn_category (id BIGINT AUTO_INCREMENT, name TEXT NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE dpn_dp_version (id BIGINT, name VARCHAR(255) NOT NULL, confidence VARCHAR(255), alias TEXT, category_id BIGINT, synopsis TEXT, context TEXT, problem TEXT, problem_details TEXT, solution TEXT, solution_details TEXT, literature TEXT, notes TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, version BIGINT, PRIMARY KEY(id, version)) ENGINE = INNODB;
-CREATE TABLE dpn_dp (id BIGINT AUTO_INCREMENT, name VARCHAR(255) NOT NULL UNIQUE, confidence VARCHAR(255), alias TEXT, category_id BIGINT, synopsis TEXT, context TEXT, problem TEXT, problem_details TEXT, solution TEXT, solution_details TEXT, literature TEXT, notes TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, version BIGINT, INDEX category_id_idx (category_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE dpn_dp_version (id BIGINT, name VARCHAR(255) NOT NULL, confidence VARCHAR(255), alias TEXT, synopsis TEXT, context TEXT, problem TEXT, problem_details TEXT, solution TEXT, solution_details TEXT, literature TEXT, notes TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, version BIGINT, PRIMARY KEY(id, version)) ENGINE = INNODB;
+CREATE TABLE dpn_dp (id BIGINT AUTO_INCREMENT, name VARCHAR(255) NOT NULL UNIQUE, confidence VARCHAR(255), alias TEXT, synopsis TEXT, context TEXT, problem TEXT, problem_details TEXT, solution TEXT, solution_details TEXT, literature TEXT, notes TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, version BIGINT, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE dpn_dp_category (dp_id BIGINT, category_id BIGINT, PRIMARY KEY(dp_id, category_id)) ENGINE = INNODB;
 CREATE TABLE dpn_dp_relation (source_id BIGINT, target_id BIGINT, type_id BIGINT, INDEX type_id_idx (type_id), PRIMARY KEY(source_id, target_id)) ENGINE = INNODB;
 CREATE TABLE dpn_relation_type (id BIGINT AUTO_INCREMENT, name VARCHAR(255) NOT NULL UNIQUE, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE dpn_sf_guard_group (id INT AUTO_INCREMENT, name VARCHAR(255) UNIQUE, description TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
@@ -11,7 +12,8 @@ CREATE TABLE dpn_sf_guard_user (id INT AUTO_INCREMENT, username VARCHAR(128) NOT
 CREATE TABLE dpn_sf_guard_user_group (user_id INT, group_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(user_id, group_id)) ENGINE = INNODB;
 CREATE TABLE dpn_sf_guard_user_permission (user_id INT, permission_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(user_id, permission_id)) ENGINE = INNODB;
 ALTER TABLE dpn_dp_version ADD CONSTRAINT dpn_dp_version_id_dpn_dp_id FOREIGN KEY (id) REFERENCES dpn_dp(id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE dpn_dp ADD CONSTRAINT dpn_dp_category_id_dpn_category_id FOREIGN KEY (category_id) REFERENCES dpn_category(id) ON DELETE SET NULL;
+ALTER TABLE dpn_dp_category ADD CONSTRAINT dpn_dp_category_dp_id_dpn_dp_id FOREIGN KEY (dp_id) REFERENCES dpn_dp(id) ON DELETE CASCADE;
+ALTER TABLE dpn_dp_category ADD CONSTRAINT dpn_dp_category_category_id_dpn_category_id FOREIGN KEY (category_id) REFERENCES dpn_category(id) ON DELETE CASCADE;
 ALTER TABLE dpn_dp_relation ADD CONSTRAINT dpn_dp_relation_type_id_dpn_relation_type_id FOREIGN KEY (type_id) REFERENCES dpn_relation_type(id) ON DELETE CASCADE;
 ALTER TABLE dpn_dp_relation ADD CONSTRAINT dpn_dp_relation_target_id_dpn_dp_id FOREIGN KEY (target_id) REFERENCES dpn_dp(id) ON DELETE CASCADE;
 ALTER TABLE dpn_dp_relation ADD CONSTRAINT dpn_dp_relation_source_id_dpn_dp_id FOREIGN KEY (source_id) REFERENCES dpn_dp(id) ON DELETE CASCADE;

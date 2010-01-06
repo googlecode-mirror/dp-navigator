@@ -25,14 +25,20 @@ if(!isset($internalLink)) {
         </td>
       </tr>
 	  <?php endif;?>
-	  <?php if($dp->getCategory()):?>
+
+      <?php
+      $categories = $dp->getCategories()->getData();
+      if(count($categories)>0):?>
       <tr>
-        <th><?php //echo $form['alias']->renderLabel() ?></th>
-        <td>
-          <span class="dp-category">(Category: <?php echo $dp->getCategory() ?>)</span>
-        </td>
+		<th> </th>
+		<td>Categories:		  
+		  <?php foreach($categories as $cat): ?>
+		    <?php echo $cat->getName()?> 
+	      <?php endforeach; ?>
+		</td>		
       </tr>
-	  <?php endif;?>
+      <?php endif; ?>
+
       <tr>
         <th><?php //echo $form['synopsis']->renderLabel() ?></th>
         <td>
