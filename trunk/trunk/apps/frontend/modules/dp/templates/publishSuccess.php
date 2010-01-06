@@ -16,6 +16,8 @@
 <?php endforeach;?>
 </div>
 
+<?php endforeach;?>
+
 <?php if(count($dpsWithoutCategories)>0 ):?>
 <div class="category">
 <div class="category-name">Other</div>
@@ -25,4 +27,3 @@
 </div>
 <?php endif;?>
 
-<?php endforeach;?>

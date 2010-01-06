@@ -8,7 +8,6 @@
  * @property string $name
  * @property enum $confidence
  * @property string $alias
- * @property integer $category_id
  * @property string $synopsis
  * @property string $context
  * @property string $problem
@@ -17,13 +16,13 @@
  * @property string $solution_details
  * @property string $literature
  * @property string $notes
- * @property Category $Category
+ * @property Doctrine_Collection $Categories
  * @property Doctrine_Collection $RelationsOut
+ * @property Doctrine_Collection $DpCategory
  * 
  * @method string              getName()             Returns the current record's "name" value
  * @method enum                getConfidence()       Returns the current record's "confidence" value
  * @method string              getAlias()            Returns the current record's "alias" value
- * @method integer             getCategoryId()       Returns the current record's "category_id" value
  * @method string              getSynopsis()         Returns the current record's "synopsis" value
  * @method string              getContext()          Returns the current record's "context" value
  * @method string              getProblem()          Returns the current record's "problem" value
@@ -32,12 +31,12 @@
  * @method string              getSolutionDetails()  Returns the current record's "solution_details" value
  * @method string              getLiterature()       Returns the current record's "literature" value
  * @method string              getNotes()            Returns the current record's "notes" value
- * @method Category            getCategory()         Returns the current record's "Category" value
+ * @method Doctrine_Collection getCategories()       Returns the current record's "Categories" collection
  * @method Doctrine_Collection getRelationsOut()     Returns the current record's "RelationsOut" collection
+ * @method Doctrine_Collection getDpCategory()       Returns the current record's "DpCategory" collection
  * @method Dp                  setName()             Sets the current record's "name" value
  * @method Dp                  setConfidence()       Sets the current record's "confidence" value
  * @method Dp                  setAlias()            Sets the current record's "alias" value
- * @method Dp                  setCategoryId()       Sets the current record's "category_id" value
  * @method Dp                  setSynopsis()         Sets the current record's "synopsis" value
  * @method Dp                  setContext()          Sets the current record's "context" value
  * @method Dp                  setProblem()          Sets the current record's "problem" value
@@ -46,8 +45,9 @@
  * @method Dp                  setSolutionDetails()  Sets the current record's "solution_details" value
  * @method Dp                  setLiterature()       Sets the current record's "literature" value
  * @method Dp                  setNotes()            Sets the current record's "notes" value
- * @method Dp                  setCategory()         Sets the current record's "Category" value
+ * @method Dp                  setCategories()       Sets the current record's "Categories" collection
  * @method Dp                  setRelationsOut()     Sets the current record's "RelationsOut" collection
+ * @method Dp                  setDpCategory()       Sets the current record's "DpCategory" collection
  * 
  * @package    dp-navigator
  * @subpackage model
@@ -77,9 +77,6 @@ abstract class BaseDp extends sfDoctrineRecord
         $this->hasColumn('alias', 'string', null, array(
              'type' => 'string',
              'length' => '',
-             ));
-        $this->hasColumn('category_id', 'integer', null, array(
-             'type' => 'integer',
              ));
         $this->hasColumn('synopsis', 'string', null, array(
              'type' => 'string',
@@ -118,14 +115,18 @@ abstract class BaseDp extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Category', array(
-             'local' => 'category_id',
-             'foreign' => 'id',
-             'onDelete' => 'SET NULL'));
+        $this->hasMany('Category as Categories', array(
+             'refClass' => 'DpCategory',
+             'local' => 'dp_id',
+             'foreign' => 'category_id'));
 
         $this->hasMany('DpRelation as RelationsOut', array(
              'local' => 'id',
              'foreign' => 'source_id'));
+
+        $this->hasMany('DpCategory', array(
+             'local' => 'id',
+             'foreign' => 'dp_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $versionable0 = new Doctrine_Template_Versionable();

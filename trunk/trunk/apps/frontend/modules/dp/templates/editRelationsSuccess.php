@@ -25,3 +25,5 @@
     </tr>
   </table>
 </form>
+
+<?php echo link_to('Back to normal edition', 'dp/edit?id='. $dp->getId());?> 

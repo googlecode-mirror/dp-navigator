@@ -19,6 +19,7 @@ abstract class BaseCategoryForm extends BaseFormDoctrine
       'name'       => new sfWidgetFormTextarea(),
       'created_at' => new sfWidgetFormDateTime(),
       'updated_at' => new sfWidgetFormDateTime(),
+      'dps_list'   => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Dp')),
     ));
 
     $this->setValidators(array(
@@ -26,6 +27,7 @@ abstract class BaseCategoryForm extends BaseFormDoctrine
       'name'       => new sfValidatorString(array('max_length' => 600)),
       'created_at' => new sfValidatorDateTime(),
       'updated_at' => new sfValidatorDateTime(),
+      'dps_list'   => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Dp', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('category[%s]');
@@ -40,6 +42,62 @@ abstract class BaseCategoryForm extends BaseFormDoctrine
   public function getModelName()
   {
     return 'Category';
+  }
+
+  public function updateDefaultsFromObject()
+  {
+    parent::updateDefaultsFromObject();
+
+    if (isset($this->widgetSchema['dps_list']))
+    {
+      $this->setDefault('dps_list', $this->object->Dps->getPrimaryKeys());
+    }
+
+  }
+
+  protected function doSave($con = null)
+  {
+    $this->saveDpsList($con);
+
+    parent::doSave($con);
+  }
+
+  public function saveDpsList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['dps_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->Dps->getPrimaryKeys();
+    $values = $this->getValue('dps_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('Dps', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('Dps', array_values($link));
+    }
   }
 
 }
