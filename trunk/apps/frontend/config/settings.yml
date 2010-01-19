@@ -34,8 +34,12 @@ all:
     # Enable the database manager
     use_database:           true
 
+    # Enlarge time session to 10 days
+    timeout:                864000
+
     # SfDoctrineGuardPlugin
     enabled_modules: [default, sfGuardAuth]
+    
 
   .actions:
     login_module:           sfGuardAuth
