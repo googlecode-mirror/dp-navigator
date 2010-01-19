@@ -99,13 +99,13 @@ if(!isset($internalLink)) {
       <tr>
         <th><?php //echo $form['literature']->renderLabel() ?></th>
         <td>
-          <span class="dp-literature"><?php echo $dp->getLiterature() ?></span>
+          <span class="dp-literature"><?php echo nl2br($dp->getLiterature()) ?></span>
         </td>
       </tr>
       <tr>
         <th><?php //echo $form['notes']->renderLabel() ?></th>
         <td>
-          <span class="dp-notes"><?php echo $dp->getNotes() ?></span>
+          <span class="dp-notes"><?php echo nl2br($dp->getNotes()) ?></span>
         </td>
       </tr>
     </tbody>

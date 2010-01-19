@@ -21,8 +21,7 @@
 		<?php endif; ?>
         - <?php echo link_to('Logout', '@sf_guard_signout') ?>
 	  <?php endif; ?>
-	</div>
-	
+	</div>	
 
     <?php echo $sf_content ?>
 

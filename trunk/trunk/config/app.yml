@@ -4,3 +4,4 @@
 # default values
 all:
   website_name: DpNavigator
+  pattern_language_presentation: This pattern language is about... #Presentation of your pattern language appearing on different pages.
