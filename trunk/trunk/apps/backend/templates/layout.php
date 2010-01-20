@@ -10,10 +10,9 @@
   </head>
   <body>
     <div id="menu">
-	    <?php echo link_to('Relation Types', 'relation_type') ?>
-	    - <?php echo link_to('Category', '@category') ?>
-        - <?php echo link_to('Users', '@sf_guard_user') ?>
-		- <?php echo link_to('Groups', '@sf_guard_group') ?> 
+	    <?php echo link_to('Category', '@category') ?>
+	    - <?php echo link_to('Relation Types', 'relation_type') ?>
+        - <?php echo link_to('Users', '@sf_guard_user') ?> (<?php echo link_to('Groups', '@sf_guard_group') ?>) 
 		- <a href="<?php echo public_path('')?>">Exit Admin Panel</a>
 	</div>
     <?php echo $sf_content ?>

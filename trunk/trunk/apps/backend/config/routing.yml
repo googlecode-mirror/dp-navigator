@@ -22,7 +22,7 @@ category:
 # default rules
 homepage:
   url:   /
-  param: { module: sfGuardUser, action: index }
+  param: { module: category, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules
