@@ -102,8 +102,14 @@ class dpActions extends sfActions
   public function executeGraph(sfWebRequest $request)
   {
 	$this->id = $request->getParameter('id');
-	$this->pagePath = $request->getScriptName(). '/dp';  //TODO: find automatically module and action name and don't always add '/'
-	$this->viewerPath = 'flash/dpViewer.swf';  // must be linked to asset directory (use public_path() in view)
+	//$this->pagePath = $request->getScriptName(). '/dp';  //TODO: find automatically module and action name and don't always add '/'
+	if($this->pagePath = sfConfig::get('sf_environment') == 'dev') {
+	  $this->pagePath = 'frontend_dev.php/dp';
+	} else {
+	  $this->pagePath = 'dp';
+	}
+	//$this->pagePath = (sfConfig->getEnvironment() == 'dev')?'frontend_dev/dp':'dp';  //TODO: find automatically module and action name and don't always add '/'
+	$this->viewerPath = 'flash/DpViewer.swf';  // must be linked to asset directory (use public_path() in view)
 	$this->xmlPath = 'flash/dps.xml';		   // must be linked to asset directory (use public_path() in view)
 
 	if(!$request->hasParameter('id')){
