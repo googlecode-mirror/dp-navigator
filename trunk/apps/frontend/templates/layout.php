@@ -13,7 +13,7 @@
 	  <div id="header">
 	    <div class="logo">
 	      <h1>
-		    <a href="">DP-Navigator</a>
+		    <?php echo link_to('DP-Navigator', 'dp/home'); ?>
 		  </h1>
 		  <h2>
 		    A collaborative tool to write and browse Design Patterns
