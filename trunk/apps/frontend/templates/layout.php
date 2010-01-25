@@ -36,7 +36,7 @@
             - <?php echo link_to('Logout', '@sf_guard_signout') ?>
 	      <?php endif; ?>
 	    </div>
-	    <div id="container"
+	    <div id="container">
           <?php echo $sf_content ?>
         </div>
       </div>
