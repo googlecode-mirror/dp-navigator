@@ -5,8 +5,8 @@ INSTALLATION FOR TESTS
 - Make sure that paths in "web/index.php", "web/frontend_dev.php", "web/backend.php" and "web/backend_dev.php" are correct.
 - Create a "cache/" and a "log/" folders in root directory and make them writable by group and others (permissions).
     -> on Linux, "mkdir cache log; chmod 666 cache; chmod 666 log"
-- Make "web/flash/" folder writable by group and others (permissions).
-    -> on Linux, go to "web/" folder then "chmod 666 flash"
+- Make "web/flash/" and "web/uploads" folders writable by group and others (permissions).
+    -> on Linux, go to "web/" folder then "chmod 666 flash; chmod 666 uploads"
 - Create a symbolic link from "web/sf" to "lib/vendor/symfony/data/web/sf"
     -> on Linux, go to "web/" folder then type "ln -s  ../lib/vendor/symfony/data/web/sf"
 
