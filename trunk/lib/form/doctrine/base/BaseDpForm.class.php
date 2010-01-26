@@ -31,6 +31,7 @@ abstract class BaseDpForm extends BaseFormDoctrine
       'created_at'       => new sfWidgetFormDateTime(),
       'updated_at'       => new sfWidgetFormDateTime(),
       'version'          => new sfWidgetFormInputText(),
+      'slug'             => new sfWidgetFormInputText(),
       'categories_list'  => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Category')),
     ));
 
@@ -51,11 +52,15 @@ abstract class BaseDpForm extends BaseFormDoctrine
       'created_at'       => new sfValidatorDateTime(),
       'updated_at'       => new sfValidatorDateTime(),
       'version'          => new sfValidatorInteger(array('required' => false)),
+      'slug'             => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'categories_list'  => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Category', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
-      new sfValidatorDoctrineUnique(array('model' => 'Dp', 'column' => array('name')))
+      new sfValidatorAnd(array(
+        new sfValidatorDoctrineUnique(array('model' => 'Dp', 'column' => array('name'))),
+        new sfValidatorDoctrineUnique(array('model' => 'Dp', 'column' => array('slug'))),
+      ))
     );
 
     $this->widgetSchema->setNameFormat('dp[%s]');

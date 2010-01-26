@@ -137,7 +137,16 @@ abstract class BaseDp extends sfDoctrineRecord
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $versionable0 = new Doctrine_Template_Versionable();
+        $sluggable0 = new Doctrine_Template_Sluggable(array(
+             'unique' => true,
+             'fields' => 
+             array(
+              0 => 'name',
+             ),
+             'canUpdate' => true,
+             ));
         $this->actAs($timestampable0);
         $this->actAs($versionable0);
+        $this->actAs($sluggable0);
     }
 }
