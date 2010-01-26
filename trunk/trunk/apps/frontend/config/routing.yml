@@ -6,6 +6,15 @@ homepage:
   url:   /
   param: { module: dp, action: home }
 
+pattern:
+  url:   /dp/view/:slug
+  class:    sfDoctrineRoute
+  param: { module: dp, action: view }
+  options:  { model: Dp, type: object }
+
+
+
+
 # generic rules
 # please, remove them by adding more specific rules
 default_index:

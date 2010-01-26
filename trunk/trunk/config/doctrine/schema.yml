@@ -1,5 +1,11 @@
 Dp:
-  actAs: { Timestampable: ~ , Versionable: ~}
+  actAs: 
+    Timestampable: ~
+    Versionable: ~
+    Sluggable:
+      unique: true
+      fields: [name]
+      canUpdate: true
   columns:
     name: { type: string(255), notnull: true, unique: true }
     confidence: { type:enum, values:[0,1,2]}

@@ -40,7 +40,11 @@ class dpActions extends sfActions
 
   public function executeView(sfWebRequest $request)
   {
-    $this->forward404Unless($dp = Doctrine::getTable('Dp')->find(array($request->getParameter('id'))), sprintf('Object dp does not exist (%s).', $request->getParameter('id')));
+	if($request->getParameter('slug')) {
+	  $dp = $this->getRoute()->getObject();
+	} else {
+      $this->forward404Unless($dp = Doctrine::getTable('Dp')->find(array($request->getParameter('id'))), sprintf('Object dp does not exist (%s).', $request->getParameter('id')));
+	}
 	$this->dp = $dp;
   }
 
@@ -119,7 +123,9 @@ class dpActions extends sfActions
 	  ->limit(1)
       ->fetchOne();
 
-	  $this->id = $firstDp->getId();
+	  if(isset($firstId)) {						// if there is at least one DP in database...
+	    $this->id = $firstDp->getId();			// displays the first one.
+	  }
 	}
 	
 	/* Write XML file*/
