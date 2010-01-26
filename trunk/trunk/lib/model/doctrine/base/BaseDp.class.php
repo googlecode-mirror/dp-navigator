@@ -8,6 +8,7 @@
  * @property string $name
  * @property enum $confidence
  * @property string $alias
+ * @property string $picture
  * @property string $synopsis
  * @property string $context
  * @property string $problem
@@ -23,6 +24,7 @@
  * @method string              getName()             Returns the current record's "name" value
  * @method enum                getConfidence()       Returns the current record's "confidence" value
  * @method string              getAlias()            Returns the current record's "alias" value
+ * @method string              getPicture()          Returns the current record's "picture" value
  * @method string              getSynopsis()         Returns the current record's "synopsis" value
  * @method string              getContext()          Returns the current record's "context" value
  * @method string              getProblem()          Returns the current record's "problem" value
@@ -37,6 +39,7 @@
  * @method Dp                  setName()             Sets the current record's "name" value
  * @method Dp                  setConfidence()       Sets the current record's "confidence" value
  * @method Dp                  setAlias()            Sets the current record's "alias" value
+ * @method Dp                  setPicture()          Sets the current record's "picture" value
  * @method Dp                  setSynopsis()         Sets the current record's "synopsis" value
  * @method Dp                  setContext()          Sets the current record's "context" value
  * @method Dp                  setProblem()          Sets the current record's "problem" value
@@ -52,7 +55,7 @@
  * @package    dp-navigator
  * @subpackage model
  * @author     Your name here
- * @version    SVN: $Id: Builder.php 6820 2009-11-30 17:27:49Z jwage $
+ * @version    SVN: $Id: Builder.php 7021 2010-01-12 20:39:49Z lsmith $
  */
 abstract class BaseDp extends sfDoctrineRecord
 {
@@ -77,6 +80,10 @@ abstract class BaseDp extends sfDoctrineRecord
         $this->hasColumn('alias', 'string', null, array(
              'type' => 'string',
              'length' => '',
+             ));
+        $this->hasColumn('picture', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
              ));
         $this->hasColumn('synopsis', 'string', null, array(
              'type' => 'string',
