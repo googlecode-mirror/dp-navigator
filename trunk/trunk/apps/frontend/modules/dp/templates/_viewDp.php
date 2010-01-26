@@ -26,6 +26,13 @@ if(!isset($internalLink)) {
       </tr>
 	  <?php endif;?>
 
+	  <?php if($dp->getPicture()): ?>
+	  <tr>
+	    <th></th>
+		<td><img src="<?php echo public_path('uploads/'.$dp->getPicture(), true);?>" style="max-height:400px"/></td>
+	  </tr>
+	  <?php endif; ?>
+
       <?php
       $categories = $dp->getCategories()->getData();
       if(count($categories)>0):?>
