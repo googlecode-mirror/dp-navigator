@@ -83,10 +83,15 @@ h3 {font-size:1.6em; margin:12px 0}
 	    padding:0;
 	}
 
-#header, #content, #footer { /* All in the center of the page */
+#header, #footer { /* All in the center of the page */
   width:800px;
   clear:both;
   margin:0 auto;
+}
+
+#content {
+  clear:both;
+  margin:50px 10%;
 }
 
 #menu {
