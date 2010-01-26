@@ -14,5 +14,9 @@ class DpForm extends BaseDpForm
   {
 	  unset($this['created_at'], $this['updated_at']);
 	  $textarea = new sfWidgetFormInputText();
+	  
+	  $this->widgetSchema['picture'] = new sfWidgetFormInputFile();
+	  $this->validatorSchema['picture'] = new sfValidatorFile(array('required' => false, 'path' => sfConfig::get('sf_upload_dir').'/'));
+
   }
 }

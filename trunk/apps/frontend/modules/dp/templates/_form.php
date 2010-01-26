@@ -48,6 +48,16 @@
           <?php echo $form['categories_list'] ?>
         </td>
       </tr>
+      <tr valign="baseline">
+        <th><?php echo $form['picture']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['picture']->renderError() ?>
+          <?php echo $form['picture'] ?>
+		  <?php if($form->getObject()->getPicture()): ?>
+		  - Current: <img src="<?php echo public_path('uploads/'.$form->getObject()->getPicture(), true);?>" height="40px"/>
+		  <?php endif; ?>
+        </td>
+      </tr>
       <tr>
         <th><?php echo $form['synopsis']->renderLabel() ?></th>
         <td>
