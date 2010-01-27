@@ -74,6 +74,9 @@ h3 {font-size:1.6em; margin:12px 0}
 	padding-right: 10px;
   }
 
+.patternName {
+  font-style: italic; 
+}
 
 /*Header*/
 #header {
