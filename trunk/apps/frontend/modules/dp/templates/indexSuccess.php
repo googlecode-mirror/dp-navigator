@@ -1,6 +1,6 @@
 <h1>Problem/Solution Summary</h1>
 
-<table>
+<table class="summary">
   <thead>
     <tr>      
       <th>Problem</th>

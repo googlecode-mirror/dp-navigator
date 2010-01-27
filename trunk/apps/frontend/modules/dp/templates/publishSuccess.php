@@ -4,6 +4,8 @@
 
 <?php include_partial('byCategories', array('categories' => $categories, 'dpsWithoutCategories'=> $dpsWithoutCategories, 'internalLink' => true)) ?>
 
+<br />
+<br />
 <?php foreach($categories as $cat):?>
 
 <div class="category">

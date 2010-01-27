@@ -70,13 +70,13 @@ if(!isset($internalLink)) {
       <tr>
         <th><?php //echo $form['problem']->renderLabel() ?></th>
         <td>
-          <span class="dp-problem"><?php echo nl2br($dp->getProblem()) ?></span>
+          <span class="dp-problem"><?php echo DP::pretty($dp->getProblem()) ?></span>
         </td>
       </tr>
       <tr>
         <th><?php //echo $form['problem_details']->renderLabel() ?></th>
         <td>
-          <span class="dp-problemDetails"><?php echo nl2br($dp->getProblemDetails()) ?></span>
+          <span class="dp-problemDetails"><?php echo DP::pretty($dp->getProblemDetails()) ?></span>
         </td>
       </tr>
 	  <tr>
@@ -91,13 +91,13 @@ if(!isset($internalLink)) {
       <tr>
         <th><?php //echo $form['solution']->renderLabel() ?></th>
         <td>
-          <span class="dp-solution"><?php echo nl2br($dp->getSolution()) ?></span>
+          <span class="dp-solution"><?php echo DP::pretty($dp->getSolution()) ?></span>
         </td>
       </tr>
       <tr>
         <th><?php //echo $form['solution_details']->renderLabel() ?></th>
         <td>
-          <span class="dp-solutionDetails"><?php echo nl2br($dp->getSolutionDetails()) ?></span>
+          <span class="dp-solutionDetails"><?php echo DP::pretty($dp->getSolutionDetails()) ?></span>
         </td>
       </tr>
 	  <tr>
@@ -106,13 +106,13 @@ if(!isset($internalLink)) {
       <tr>
         <th><?php //echo $form['literature']->renderLabel() ?></th>
         <td>
-          <span class="dp-literature"><?php echo nl2br($dp->getLiterature()) ?></span>
+          <span class="dp-literature"><?php echo DP::pretty($dp->getLiterature()) ?></span>
         </td>
       </tr>
       <tr>
         <th><?php //echo $form['notes']->renderLabel() ?></th>
         <td>
-          <span class="dp-notes"><?php echo nl2br($dp->getNotes()) ?></span>
+          <span class="dp-notes"><?php echo DP::pretty($dp->getNotes()) ?></span>
         </td>
       </tr>
     </tbody>

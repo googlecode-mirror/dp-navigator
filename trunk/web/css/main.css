@@ -57,6 +57,24 @@ h1 {font-size:2.0em }
 h2 {font-size:1.8em }
 h3 {font-size:1.6em; margin:12px 0}
 
+.summary {
+  width:80%;
+  margin: auto 10%;
+  border-collapse: collapse;
+}
+
+  .summary th {
+    border:2px solid #AAAAAA;
+    padding: 4px;
+	background: #FBEFEF;
+  }
+  .summary td {
+    border:1px solid #AAAAAA;
+	padding-left: 10px;
+	padding-right: 10px;
+  }
+
+
 /*Header*/
 #header {
     height:130px;
