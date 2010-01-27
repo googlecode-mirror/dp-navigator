@@ -7,10 +7,10 @@ if(!isset($internalLink)) {
 }
 ?>
 
-<table>
+<table class="summary">
   <thead>
     <tr>
-      <th>Category</th>
+      <th>Categories</th>
       <th>Patterns</th>
     </tr>
   </thead>
