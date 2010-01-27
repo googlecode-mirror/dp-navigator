@@ -49,13 +49,13 @@ if(!isset($internalLink)) {
       <tr>
         <th><?php //echo $form['synopsis']->renderLabel() ?></th>
         <td>
-          <span class="dp-synopsis"><?php echo $dp->getSynopsis() ?></span>
+          <span class="dp-synopsis"><?php echo DP::pretty($dp->getSynopsis()) ?></span>
         </td>
       </tr>
       <tr>
         <th><?php //echo $form['context']->renderLabel() ?></th>
         <td>
-          <span class="dp-context"><?php echo $dp->getContext() ?></span>
+          <span class="dp-context"><?php echo DP::pretty($dp->getContext()) ?></span>
         </td>
       </tr>
 	  <tr>
