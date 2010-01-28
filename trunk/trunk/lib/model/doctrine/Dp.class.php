@@ -18,7 +18,7 @@ class Dp extends BaseDp
 	$out = preg_replace('#(\[\[\ *(http://.*?)\ *\]\])#i', '<a href="$2" target="_blank">$2</a>', $string);
 
     //Replace structures as such [[patterName|2]] by <a href="dp/view/id/2">patternName</a>
-	$out = preg_replace('#(\[\[\ *(.*)\|(\d+)\ *\]\])#i', '<a href="$3" class="patternName">$2</a>', $string);
+	$out = preg_replace('#(\[\[\ *(.*?)\|(\d+)\ *\]\])#i', '<a href="$3" class="patternName">$2</a>', $out);
 
 	/* The following structure is related to Serious Game's domain.
 	   Make this structure more generic in next versions.*/
