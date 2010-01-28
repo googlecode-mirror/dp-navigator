@@ -15,7 +15,8 @@
 }
 
 .dp-name, .dp-confidence {
-  font-size:60px;
+  font-size:50px;
+  text-align:left;
 }
 
 .dp-problem, .dp-solution {
