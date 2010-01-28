@@ -115,6 +115,10 @@ if(!isset($internalLink)) {
           <span class="dp-notes"><?php echo DP::pretty($dp->getNotes()) ?></span>
         </td>
       </tr>
+	  <tr>
+	    <th></th>
+	    <td>URL to cite this pattern: <?php echo link_to(public_path('', true).'pattern/'.$dp->getSlug(), public_path('', true).'pattern/'.$dp->getSlug());?></td>
+	  </tr>
     </tbody>
   </table>
 
