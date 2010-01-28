@@ -13,7 +13,7 @@ if(!isset($internalLink)) {
       <tr>
         <th><?php //echo $form['name']->renderLabel() ?></th>
         <td>
-          <a name="<?php echo $dp->getName() ?>"><span class="dp-name"><?php echo $dp->getName() ?></span></a>
+          <a name="<?php echo $dp->getName() ?>" class="anchor"><span class="dp-name"><?php echo $dp->getName() ?></span></a>
 		  <span class="dp-confidence"><?php for($i = 0; $i<(int)$dp->getConfidence(); $i++):?>*<?php endfor; ?></span>
         </td>
       </tr>
