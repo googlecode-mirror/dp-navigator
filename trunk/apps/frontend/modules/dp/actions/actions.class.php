@@ -63,8 +63,6 @@ class dpActions extends sfActions
     $this->form = new DpForm($dp);
 
     $this->processForm($request, $this->form);
-
-    $this->setTemplate('edit');
   }
 
   public function executeDelete(sfWebRequest $request)
@@ -84,7 +82,8 @@ class dpActions extends sfActions
     {
       $dp = $form->save();
 
-      $this->redirect('dp/edit?id='.$dp->getId());
+      //$this->redirect('dp/edit?id='.$dp->getId());
+	  $this->redirect('dp/view?id='. $dp->getId());
     }
   }
 
