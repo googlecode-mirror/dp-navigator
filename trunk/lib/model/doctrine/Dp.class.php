@@ -17,10 +17,11 @@ class Dp extends BaseDp
     //Replace structures as such [[http://google.com]] by <a href="google.com">google.com</a>
 	$out = preg_replace('#(\[\[\ *(http://.*?)\ *\]\])#i', '<a href="$2" target="_blank">$2</a>', $string);
 
+    //Replace structures as such [[patterName|2]] by <a href="dp/view/id/2">patternName</a>
+	$out = preg_replace('#(\[\[\ *(.*)\|(\d+)\ *\]\])#i', '<a href="$3" class="patternName">$2</a>', $string);
 
 	/* The following structure is related to Serious Game's domain.
 	   Make this structure more generic in next versions.*/
-
 	//Replace structures like [[758-Americas-Army]] by <a href="http://serious.gameclassification.com/EN/games/758-Americas-Army/index.html">Americas Army</a>
 	$out = preg_replace('#(\[\[\ *(\d*-(.*?))\ *\]\])#i', '<a href="http://serious.gameclassification.com/EN/games/$2/index.html" target="_blank">$3</a>', $out);
 
