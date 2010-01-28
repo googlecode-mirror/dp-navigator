@@ -27,6 +27,11 @@
   width: 500px;
 }
 
+.dp-citation {
+  font-size: small;
+  text-align:left;
+}
+
 .dp-end {
   text-align: center;
 }

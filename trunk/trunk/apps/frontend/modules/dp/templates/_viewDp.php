@@ -117,7 +117,7 @@ if(!isset($internalLink)) {
       </tr>
 	  <tr>
 	    <th></th>
-	    <td>URL to cite this pattern: <?php echo link_to(public_path('', true).'pattern/'.$dp->getSlug(), public_path('', true).'pattern/'.$dp->getSlug());?></td>
+	    <td class="dp-citation">To cite this pattern: <?php echo link_to(public_path('', true).'pattern/'.$dp->getSlug(), public_path('', true).'pattern/'.$dp->getSlug());?></td>
 	  </tr>
     </tbody>
   </table>
