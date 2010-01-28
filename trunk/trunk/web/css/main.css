@@ -53,6 +53,10 @@ a {
     text-decoration: none;
   }
 
+.dp-menu {
+  text-align:right;
+}
+
 #wrapper {
   width:100%;
 }
