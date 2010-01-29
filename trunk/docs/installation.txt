@@ -4,9 +4,9 @@ INSTALLATION FOR TESTS
 - Use SQL code from "data/sql/schema.sql" to create your database
 - Make sure that paths in "web/index.php", "web/frontend_dev.php", "web/backend.php" and "web/backend_dev.php" are correct.
 - Create a "cache/" and a "log/" folders in root directory and make them writable by group and others (permissions).
-    -> on Linux, "mkdir cache log; chmod 666 cache; chmod 666 log"
+    -> on Linux, "mkdir cache log; chmod 777 cache; chmod 777 log"
 - Make "web/flash/" and "web/uploads" folders writable by group and others (permissions).
-    -> on Linux, go to "web/" folder then "chmod 666 flash; chmod 666 uploads"
+    -> on Linux, go to "web/" folder then "chmod 777 flash; chmod 777 uploads"
 - Create a symbolic link from "web/sf" to "lib/vendor/symfony/data/web/sf"
     -> on Linux, go to "web/" folder then type "ln -s  ../lib/vendor/symfony/data/web/sf"
 
