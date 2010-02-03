@@ -19,6 +19,10 @@
   text-align:left;
 }
 
+.dp-picture {
+  border: solid 2px #FBEFEF;
+}
+
 .dp-problem, .dp-solution {
   font-weight:bold;
 }
