@@ -18,15 +18,15 @@ class Dp extends BaseDp
 	$out = preg_replace('#(\[\[\ *(http://.*?)\ *\]\])#i', '<a href="$2" target="_blank">$2 <span title="External link">&#x219D;</span></a>', $string);
 
     //Replace structures as such [[patterName|2]] by <a href="dp/view/id/2">patternName</a>
-	$out = preg_replace('#(\[\[\ *(.*?)\|(\d+)\ *\]\])#i', '<a href="$3" class="patternName">$2</a>', $out);
+	$out = preg_replace('#(\[\[\ *([^\]]*?)\|(\d+)\ *\]\])#i', '<a href="$3" class="patternName">$2</a>', $out);
+
+    //Replace structures as such [[patternname]] by <span class="patternName">patternname</span>
+	$out = preg_replace('#(\[\[\ *(.*?)\ *\]\])#i', '<span class="patternName">$2</span>', $out);
 
 	/* The following structure is related to Serious Game's domain.
 	   Make this structure more generic in next versions.*/
 	//Replace structures like [[758-Americas-Army]] by <a href="http://serious.gameclassification.com/EN/games/758-Americas-Army/index.html">Americas Army</a>
 	$out = preg_replace('#(\[\[\ *(\d*-(.*?))\ *\]\])#i', '<a href="http://serious.gameclassification.com/EN/games/$2/index.html" target="_blank">$3 <span title="External link to GameClassification.com">&#x219D;</span></a>', $out);
-
-    //Replace structures as such [[patternname]] by <span class="patternName">patternname</span>
-	$out = preg_replace('#(\[\[\ *(.*?)\ *\]\])#i', '<span class="patternName">$2</span>', $out);
 
 	// Transform break line into <br/>
 	$out = nl2br($out);
