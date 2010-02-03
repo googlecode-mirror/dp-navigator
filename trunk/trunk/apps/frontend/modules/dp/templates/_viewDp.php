@@ -122,7 +122,7 @@ if(!isset($internalLink)) {
 	  $relationsOut = $dp->getRelationsOut()->getData();
 	  if(count($relationsOut)>0):?>
 		<tr>
-		  <td>Relations: </td>
+		  <th>Relations: </th>
 		  <td>
 		    <ul>
 	        <?php foreach($relationsOut as $rel): ?>
