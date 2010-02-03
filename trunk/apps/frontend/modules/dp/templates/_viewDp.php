@@ -37,8 +37,8 @@ if(!isset($internalLink)) {
       $categories = $dp->getCategories()->getData();
       if(count($categories)>0):?>
       <tr>
-		<th> </th>
-		<td>Categories:		  
+		<th></th>
+		<td>		  
 		  <?php foreach($categories as $cat): ?>
 		    <?php echo $cat->getName()?> 
 	      <?php endforeach; ?>
@@ -52,12 +52,14 @@ if(!isset($internalLink)) {
           <span class="dp-synopsis"><?php echo DP::pretty($dp->getSynopsis()) ?></span>
         </td>
       </tr>
+	  <?php if($dp->getContext()): ?>
       <tr>
-        <th><?php //echo $form['context']->renderLabel() ?></th>
+        <th>Context: </th>
         <td>
           <span class="dp-context"><?php echo DP::pretty($dp->getContext()) ?></span>
         </td>
       </tr>
+	  <?php endif;?>
 	  <tr>
 	    <td colspan=2></td>
 	  </tr>
@@ -68,7 +70,7 @@ if(!isset($internalLink)) {
 	    <td colspan=2></td>
 	  </tr>
       <tr>
-        <th><?php //echo $form['problem']->renderLabel() ?></th>
+        <th>Problem: </th>
         <td>
           <span class="dp-problem"><?php echo DP::pretty($dp->getProblem()) ?></span>
         </td>
@@ -83,13 +85,10 @@ if(!isset($internalLink)) {
 	    <td colspan=2></td>
 	  </tr>
 	  <tr>
-	    <td colspan=2>Therefore:</td>
-	  </tr>
-	  <tr>
 	    <td colspan=2></td>
 	  </tr>
       <tr>
-        <th><?php //echo $form['solution']->renderLabel() ?></th>
+        <th>Solution: </th>
         <td>
           <span class="dp-solution"><?php echo DP::pretty($dp->getSolution()) ?></span>
         </td>
@@ -103,42 +102,47 @@ if(!isset($internalLink)) {
 	  <tr>
 	    <td colspan=2 align=center>°°°</td>
 	  </tr>
+	  <?php if($dp->getLiterature()): ?>
       <tr>
-        <th><?php //echo $form['literature']->renderLabel() ?></th>
+        <th>References: </th>
         <td>
           <span class="dp-literature"><?php echo DP::pretty($dp->getLiterature()) ?></span>
         </td>
       </tr>
+	  <?php endif;?>
+	  <?php if($dp->getNotes()): ?>
       <tr>
-        <th><?php //echo $form['notes']->renderLabel() ?></th>
+        <th>Notes: </th>
         <td>
           <span class="dp-notes"><?php echo DP::pretty($dp->getNotes()) ?></span>
         </td>
       </tr>
-	  <tr>
-	    <th></th>
-	    <td class="dp-citation">To cite this pattern: <?php echo link_to(public_path('', true).'pattern/'.$dp->getSlug(), public_path('', true).'pattern/'.$dp->getSlug());?></td>
-	  </tr>
-    </tbody>
-  </table>
+	  <?php endif;?>
+      <?php
+	  $relationsOut = $dp->getRelationsOut()->getData();
+	  if(count($relationsOut)>0):?>
+		<tr>
+		  <td>Relations: </td>
+		  <td>
+		    <ul>
+	        <?php foreach($relationsOut as $rel): ?>
+		      <li>
+			    <?php echo $rel->getType()?>
+		        <?php if($internalLink): ?>
+		          <a href="#<?php echo $rel->getTarget()->getName()?>"><?php echo $rel->getTarget();?></a>
+		        <?php else:?>
+		          <?php echo link_to($rel->getTarget(), 'dp/view?id='. $rel->getTarget()->getId());?>
+		        <?php endif;?>
+			  </li>
+	  	    <?php endforeach; ?>
+		    </ul>
+		  </td>		
+		</tr>
+	  <?php endif; ?>
 
-  <?php
-  $relationsOut = $dp->getRelationsOut()->getData();
-  if(count($relationsOut)>0):?>
-  <table>
-    <?php foreach($relationsOut as $rel): ?>
-	<tr>
-		<td>Relations: </td>
-		<td>
-		  <?php echo $rel->getType()?>
-		  <?php if($internalLink): ?>
-		    <a href="#<?php echo $rel->getTarget()->getName()?>"><?php echo $rel->getTarget();?></a>
-		  <?php else:?>
-		    <?php echo link_to($rel->getTarget(), 'dp/view?id='. $rel->getTarget()->getId());?>
-		  <?php endif;?>
-		</td>		
-	</tr>
-	<?php endforeach; ?>
+	  <tr>
+	    <td class="dp-citation" colspan=2>To cite this pattern: <?php echo link_to(public_path('', true).'pattern/'.$dp->getSlug(), public_path('', true).'pattern/'.$dp->getSlug());?></td>
+	  </tr>
+      </tbody>
   </table>
-  <?php endif; ?>
 </div>
