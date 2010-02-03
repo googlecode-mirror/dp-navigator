@@ -26,4 +26,7 @@
   </table>
 </form>
 
-<?php echo link_to('Back to normal edition', 'dp/edit?id='. $dp->getId());?> 
+<div class="dp-menu">
+<?php echo link_to('Edit DP', 'dp/edit?id='. $dp->getId());?>  -
+<?php echo link_to('View DP', 'dp/view?id='. $dp->getId());?>
+</div>
