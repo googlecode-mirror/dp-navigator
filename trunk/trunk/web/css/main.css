@@ -14,6 +14,13 @@
   text-align: justify;
 }
 
+.dp th {
+  vertical-align: top;
+  text-align:left;
+  padding-right: 20px;
+  font-weight: normal;
+}
+
 .dp-name, .dp-confidence {
   font-size:50px;
   text-align:left;
@@ -33,7 +40,7 @@
 
 .dp-citation {
   font-size: small;
-  text-align:left;
+  text-align:right;
 }
 
 .dp-end {
