@@ -36,14 +36,14 @@ if(!isset($internalLink)) {
       <?php
       $categories = $dp->getCategories()->getData();
       if(count($categories)>0):?>
-      <tr>
+      <!--tr>
 		<th></th>
 		<td>		  
 		  <?php foreach($categories as $cat): ?>
 		    <?php echo $cat->getName()?> 
 	      <?php endforeach; ?>
 		</td>		
-      </tr>
+      </tr-->
       <?php endif; ?>
 
       <tr>
@@ -63,18 +63,22 @@ if(!isset($internalLink)) {
 	  <tr>
 	    <td colspan=2></td>
 	  </tr>
+	  <?php if($dp->getContext()): ?>
 	  <tr>
 	    <td colspan=2 align=center>°°°</td>
 	  </tr>
+	  <?php endif;?>
 	  <tr>
 	    <td colspan=2></td>
 	  </tr>
+	  <?php if($dp->getProblem()): ?>
       <tr>
         <th>Problem: </th>
         <td>
           <span class="dp-problem"><?php echo DP::pretty($dp->getProblem()) ?></span>
         </td>
       </tr>
+	  <?php endif;?>
       <tr>
         <th><?php //echo $form['problem_details']->renderLabel() ?></th>
         <td>
@@ -87,12 +91,14 @@ if(!isset($internalLink)) {
 	  <tr>
 	    <td colspan=2></td>
 	  </tr>
+	  <?php if($dp->getSolution()): ?>
       <tr>
         <th>Solution: </th>
         <td>
           <span class="dp-solution"><?php echo DP::pretty($dp->getSolution()) ?></span>
         </td>
       </tr>
+	  <?php endif;?>
       <tr>
         <th><?php //echo $form['solution_details']->renderLabel() ?></th>
         <td>
