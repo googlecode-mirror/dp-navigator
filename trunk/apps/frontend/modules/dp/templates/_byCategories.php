@@ -21,7 +21,7 @@ if(!isset($internalLink)) {
       <td>
 	  <?php foreach($category->getDps() as $dp ):?>
 	    <?php if($internalLink):?>
-		  <a href="#<?php echo $dp->getName();?>"><?php echo $dp->getName();?></a>
+		  <a href="#<?php echo $dp->getId();?>"><?php echo $dp->getName();?></a>
 		<?php else:?>
 	      <?php echo link_to($dp->getName(), 'dp/view?id='.$dp->getId());?>
 		<?php endif;?>
@@ -36,7 +36,7 @@ if(!isset($internalLink)) {
 	  <td>
 	  <?php foreach($dpsWithoutCategories as $dp ):?>
 	    <?php if($internalLink):?>
-		  <a href="#<?php echo $dp->getName();?>"><?php echo $dp->getName();?></a>
+		  <a href="#<?php echo $dp->getId();?>"><?php echo $dp->getName();?></a>
 		<?php else:?>
 	      <?php echo link_to($dp->getName(), 'dp/view?id='.$dp->getId());?>
 		<?php endif;?>
