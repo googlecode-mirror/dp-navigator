@@ -3,3 +3,15 @@
 
 home:
   is_secure: false
+
+byCategories:
+  is_secure: false
+
+graph:
+  is_secure: false
+
+publish:
+  is_secure: false
+
+view:
+  is_secure: false
