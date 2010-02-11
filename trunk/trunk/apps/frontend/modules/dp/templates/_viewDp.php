@@ -13,7 +13,7 @@ if(!isset($internalLink)) {
       <tr>
         <th><?php //echo $form['name']->renderLabel() ?></th>
         <td>
-          <a name="<?php echo $dp->getName() ?>" class="anchor"><span class="dp-name"><?php echo $dp->getName() ?></span></a>
+          <a name="<?php echo $dp->getId() ?>" class="anchor"><span class="dp-name"><?php echo $dp->getName() ?></span></a>
 		  <span class="dp-confidence"><?php for($i = 0; $i<(int)$dp->getConfidence(); $i++):?>*<?php endfor; ?></span>
         </td>
       </tr>
@@ -49,14 +49,14 @@ if(!isset($internalLink)) {
       <tr>
         <th><?php //echo $form['synopsis']->renderLabel() ?></th>
         <td>
-          <span class="dp-synopsis"><?php echo DP::pretty($dp->getSynopsis()) ?></span>
+          <span class="dp-synopsis"><?php echo DP::pretty($dp->getSynopsis(), $internalLink) ?></span>
         </td>
       </tr>
 	  <?php if($dp->getContext()): ?>
       <tr>
         <th>Context: </th>
         <td>
-          <span class="dp-context"><?php echo DP::pretty($dp->getContext()) ?></span>
+          <span class="dp-context"><?php echo DP::pretty($dp->getContext(), $internalLink) ?></span>
         </td>
       </tr>
 	  <?php endif;?>
@@ -75,14 +75,14 @@ if(!isset($internalLink)) {
       <tr>
         <th>Problem: </th>
         <td>
-          <span class="dp-problem"><?php echo DP::pretty($dp->getProblem()) ?></span>
+          <span class="dp-problem"><?php echo DP::pretty($dp->getProblem(), $internalLink) ?></span>
         </td>
       </tr>
 	  <?php endif;?>
       <tr>
         <th><?php //echo $form['problem_details']->renderLabel() ?></th>
         <td>
-          <span class="dp-problemDetails"><?php echo DP::pretty($dp->getProblemDetails()) ?></span>
+          <span class="dp-problemDetails"><?php echo DP::pretty($dp->getProblemDetails(), $internalLink) ?></span>
         </td>
       </tr>
 	  <tr>
@@ -95,14 +95,14 @@ if(!isset($internalLink)) {
       <tr>
         <th>Solution: </th>
         <td>
-          <span class="dp-solution"><?php echo DP::pretty($dp->getSolution()) ?></span>
+          <span class="dp-solution"><?php echo DP::pretty($dp->getSolution(), $internalLink) ?></span>
         </td>
       </tr>
 	  <?php endif;?>
       <tr>
         <th><?php //echo $form['solution_details']->renderLabel() ?></th>
         <td>
-          <span class="dp-solutionDetails"><?php echo DP::pretty($dp->getSolutionDetails()) ?></span>
+          <span class="dp-solutionDetails"><?php echo DP::pretty($dp->getSolutionDetails(), $internalLink) ?></span>
         </td>
       </tr>
 	  <tr>
@@ -112,7 +112,7 @@ if(!isset($internalLink)) {
       <tr>
         <th>References: </th>
         <td>
-          <span class="dp-literature"><?php echo DP::pretty($dp->getLiterature()) ?></span>
+          <span class="dp-literature"><?php echo DP::pretty($dp->getLiterature(), $internalLink) ?></span>
         </td>
       </tr>
 	  <?php endif;?>
@@ -120,7 +120,7 @@ if(!isset($internalLink)) {
       <tr>
         <th>Notes: </th>
         <td>
-          <span class="dp-notes"><?php echo DP::pretty($dp->getNotes()) ?></span>
+          <span class="dp-notes"><?php echo DP::pretty($dp->getNotes(), $internalLink) ?></span>
         </td>
       </tr>
 	  <?php endif;?>

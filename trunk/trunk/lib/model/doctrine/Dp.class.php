@@ -13,12 +13,16 @@
 class Dp extends BaseDp
 {
   /* Manage the string to make appear links */
-  public static function pretty($string) {
+  public static function pretty($string, $internalLink = false) {
     //Replace structures as such [[http://google.com]] by <a href="google.com">google.com</a>
 	$out = preg_replace('#(\[\[\ *(http://.*?)\ *\]\])#i', '<a href="$2" target="_blank">$2 <span title="External link">&#x219D;</span></a>', $string);
 
     //Replace structures as such [[patterName|2]] by <a href="dp/view/id/2">patternName</a>
-	$out = preg_replace('#(\[\[\ *([^\]]*?)\|(\d+)\ *\]\])#i', '<a href="$3" class="patternName">$2</a>', $out);
+	if($internalLink) {
+	  $out = preg_replace('#(\[\[\ *([^\]]*?)\|(\d+)\ *\]\])#i', '<a href="#$3" class="patternName">$2</a>', $out);
+	} else {
+	  $out = preg_replace('#(\[\[\ *([^\]]*?)\|(\d+)\ *\]\])#i', '<a href="$3" class="patternName">$2</a>', $out);
+	}
 
     //Replace structures as such [[linkName|http://google.com]] by <a href="http://google.com">linkName</a>
 	$out = preg_replace('#(\[\[\ *([^\]]*?)\|(http://.*?)\ *\]\])#i', '<a href="$3" target="_blank">$2 <span title="External link">&#x219D;</span></a>', $out);
