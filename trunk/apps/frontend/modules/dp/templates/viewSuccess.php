@@ -1,15 +1,18 @@
+<?php
+  $menu = '';
+  if ($sf_user->isAuthenticated()) {
+	$menu.= link_to('Edit', 'dp/edit?id='. $dp->getId()) . ' - '; 
+	$menu.= link_to('Edit relations with other DP', 'dp/editRelations?id='. $dp->getId()) . ' - ';
+  }
+  $menu.= link_to('In Graph', 'dp/graph?id='.$dp->getId());
+?>
+
 <div class="dp-menu">
-<?php echo link_to('Edit', 'dp/edit?id='. $dp->getId())?> - 
-<?php echo link_to('Edit relations with other DP', 'dp/editRelations?id='. $dp->getId())?> - 
-<?php echo link_to('In Graph', 'dp/graph?id='.$dp->getId())?>
+ <?php echo $menu; ?>
 </div>
 
 <?php include_partial('viewDp', array('dp' => $dp)) ?>
 
-
-<?php //same menu as above ?>
 <div class="dp-menu">
-<?php echo link_to('Edit', 'dp/edit?id='. $dp->getId())?> - 
-<?php echo link_to('Edit relations with other DP', 'dp/editRelations?id='. $dp->getId())?> - 
-<?php echo link_to('In Graph', 'dp/graph?id='.$dp->getId())?>
+ <?php echo $menu; ?>
 </div>

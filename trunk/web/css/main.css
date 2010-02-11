@@ -144,6 +144,7 @@ h3 {font-size:1.6em; margin:12px 0}
 #menu {
   border:1px dotted #AAAAAA;
   text-align:center;
+  word-spacing: 5px;
   /*font-weight: bold;*/
 }
 
