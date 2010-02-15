@@ -61,15 +61,15 @@ if(!isset($internalLink)) {
       </tr>
 	  <?php endif;?>
 	  <tr>
-	    <td colspan=2></td>
+	    <td colspan="2"></td>
 	  </tr>
 	  <?php if($dp->getContext()): ?>
 	  <tr>
-	    <td colspan=2 align=center>°°°</td>
+	    <td colspan="2" align="center">°°°</td>
 	  </tr>
 	  <?php endif;?>
 	  <tr>
-	    <td colspan=2></td>
+	    <td colspan="2"></td>
 	  </tr>
 	  <?php if($dp->getProblem()): ?>
       <tr>
@@ -86,10 +86,10 @@ if(!isset($internalLink)) {
         </td>
       </tr>
 	  <tr>
-	    <td colspan=2></td>
+	    <td colspan="2"></td>
 	  </tr>
 	  <tr>
-	    <td colspan=2></td>
+	    <td colspan="2"></td>
 	  </tr>
 	  <?php if($dp->getSolution()): ?>
       <tr>
@@ -106,7 +106,7 @@ if(!isset($internalLink)) {
         </td>
       </tr>
 	  <tr>
-	    <td colspan=2 align=center>°°°</td>
+	    <td colspan="2" align="center">°°°</td>
 	  </tr>
 	  <?php if($dp->getLiterature()): ?>
       <tr>
@@ -147,7 +147,7 @@ if(!isset($internalLink)) {
 	  <?php endif; ?>
 
 	  <tr>
-	    <td class="dp-citation" colspan=2>To cite this pattern: <?php echo link_to(public_path('', true).'pattern/'.$dp->getSlug(), public_path('', true).'pattern/'.$dp->getSlug());?></td>
+	    <td class="dp-citation" colspan="2">To cite this pattern: <?php echo link_to(public_path('', true).'pattern/'.$dp->getSlug(), public_path('', true).'pattern/'.$dp->getSlug());?></td>
 	  </tr>
       </tbody>
   </table>
