@@ -11,8 +11,7 @@ if(!isset($internalLink)) {
   <table>
     <tbody>
       <tr>
-        <th><?php //echo $form['name']->renderLabel() ?></th>
-        <td>
+        <td colspan="2">
           <a name="<?php echo $dp->getId() ?>" class="anchor"><span class="dp-name"><?php echo $dp->getName() ?></span></a>
 		  <span class="dp-confidence"><?php for($i = 0; $i<(int)$dp->getConfidence(); $i++):?>*<?php endfor; ?></span>
         </td>
