@@ -29,7 +29,7 @@ if(!isset($internalLink)) {
 	  <?php if($dp->getPicture()): ?>
 	  <tr>
 	    <th></th>
-		<td><img class="dp-picture" src="<?php echo public_path('uploads/'.$dp->getPicture(), true);?>" style="max-height:400px"/></td>
+		<td><img class="dp-picture" src="<?php echo public_path('uploads/'.$dp->getPicture(), true);?>" style="max-height:400px" alt="Dp's illustration"/></td>
 	  </tr>
 	  <?php endif; ?>
 
