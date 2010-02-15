@@ -1,6 +1,6 @@
 <h1>All Design Patterns in One Page</h1>
 
-<a name="top" />
+<a name="top"></a>
 
 <?php include_partial('byCategories', array('categories' => $categories, 'dpsWithoutCategories'=> $dpsWithoutCategories, 'internalLink' => true)) ?>
 
