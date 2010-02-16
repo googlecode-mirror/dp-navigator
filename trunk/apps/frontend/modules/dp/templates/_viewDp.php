@@ -134,7 +134,7 @@ if(!isset($internalLink)) {
 		      <li>
 			    <?php echo $rel->getType()?>
 		        <?php if($internalLink): ?>
-		          <a href="#<?php echo $rel->getTarget()->getName()?>"><?php echo $rel->getTarget();?></a>
+		          <a href="#<?php echo $rel->getTarget()->getId()?>"><?php echo $rel->getTarget();?></a>
 		        <?php else:?>
 		          <?php echo link_to($rel->getTarget(), 'dp/view?id='. $rel->getTarget()->getId());?>
 		        <?php endif;?>
