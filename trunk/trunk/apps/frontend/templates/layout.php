@@ -9,6 +9,7 @@
     <?php include_javascripts() ?>
   </head>
   <body>
+
     <div id="wrapheader" class="wrapper">
 	  <div id="header">
 	    <div class="logo">
