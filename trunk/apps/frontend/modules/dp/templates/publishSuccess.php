@@ -1,3 +1,7 @@
+<div class="dp-menu">
+This page is <a href="javascript:window.print()">print-ready</a>.
+</div>
+
 <h1>All Design Patterns in One Page</h1>
 
 <a name="top"></a>

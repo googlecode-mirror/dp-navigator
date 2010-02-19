@@ -1,5 +1,3 @@
-
-
 .category {
   margin-top: 25px;
   border-top: groove 1px black;
@@ -15,6 +13,14 @@
   text-align: justify;
 }
 
+  @media print {
+     .dp {
+	   width: 100%;
+       text-align: justify;
+	   page-break-after: always;
+	 }
+  }
+
 .dp th {
   vertical-align: top;
   text-align:left;
@@ -25,6 +31,12 @@
 .dp-name, .dp-confidence {
   font-size:50px;
 }
+
+  @media print {
+    .dp-name, .dp-confidence {
+      font-size:40px;
+    }   
+  }
 
 .dp-picture {
   border: solid 2px #FBEFEF;
@@ -45,8 +57,14 @@
 }
 
 .dp-end {
-  text-align: center;
+  text-align: right;
 }
+
+  @media print{
+    .dp-end{
+	  display: none;
+	}
+  }
 
 
 /* Global theme (inspired by Constructor theme on WordPress) */
@@ -62,6 +80,12 @@ body {
   background-repeat:no-repeat;
 }
 
+  @media print {
+    body {
+	  background-image:none;
+    }
+  }
+
 a {
   color:#333333;
   text-decoration:underline;
@@ -74,6 +98,12 @@ a {
 .dp-menu {
   text-align:right;
 }
+
+  @media print {
+    .dp-menu {
+	  display:none;
+	}  
+  }
 
 #wrapper {
   width:100%;
@@ -88,6 +118,14 @@ h3 {font-size:1.6em; margin:12px 0}
   margin: auto 10%;
   border-collapse: collapse;
 }
+
+  @media print {
+    .summary {
+	  width:90%;
+      margin: 0;
+	  page-break-after: always;
+	}  
+  }
 
   .summary th {
     border:2px solid #AAAAAA;
@@ -141,11 +179,23 @@ h3 {font-size:1.6em; margin:12px 0}
   margin:50px 10%;
 }
 
+  @media print {
+    #content {
+      clear:both;
+      margin:10px 10px;
+    }
+  }
+
 #menu {
   border:1px dotted #AAAAAA;
   text-align:center;
   word-spacing: 5px;
-  /*font-weight: bold;*/
+}
+
+@media print {
+  #menu {
+    display: none;
+  }
 }
 
 #container {
