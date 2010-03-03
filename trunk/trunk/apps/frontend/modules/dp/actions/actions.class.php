@@ -40,12 +40,25 @@ class dpActions extends sfActions
 
   public function executeView(sfWebRequest $request)
   {
+	// Add data for sidebar with all Dps
+	$this->allCategories = Doctrine::getTable('Category')
+    ->createQuery('a')
+	->addOrderBy('a.name ASC')
+    ->execute();
+
+	$this->dpsWithoutCategories = Doctrine_Query::create()
+    ->from('Dp d')
+    ->where('NOT EXISTS (SELECT d.id FROM DpCategory dc WHERE dc.dp_id = d.id)', 1)
+	->execute();
+
+	// Data for displaying Dp
 	if($request->getParameter('slug')) {
 	  $dp = $this->getRoute()->getObject();
 	} else {
       $this->forward404Unless($dp = Doctrine::getTable('Dp')->find(array($request->getParameter('id'))), sprintf('Object dp does not exist (%s).', $request->getParameter('id')));
 	}
 	$this->dp = $dp;
+
   }
 
   public function executeEdit(sfWebRequest $request)

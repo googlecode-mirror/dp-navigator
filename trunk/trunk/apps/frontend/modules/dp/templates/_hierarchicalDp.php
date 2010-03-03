@@ -21,8 +21,7 @@ if(!isset($internalLink)) {
 <?php if(count($childrenDps)>0):?>
 <ul>
 <?php foreach($childrenDps as $childDp): ?>
-  <!--<li><?php echo $childDp ?></li>-->
-  <li><?php include_partial('hierarchicalDp', array('dp' => $childDp, 'category' =>$category, 'internalLink' => $internalLink)) ?></li>
+  <?php include_partial('hierarchicalDp', array('dp' => $childDp, 'category' =>$category, 'internalLink' => $internalLink)) ?>
 <?php endforeach;?>
 </ul>
 <?php endif;?>
