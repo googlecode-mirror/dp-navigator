@@ -19,14 +19,11 @@ if(!isset($internalLink)) {
     <tr>
       <td><?php echo $category->getName() ?></td>
       <td>
-	  <?php foreach($category->getDps() as $dp ):?>
-	    <?php if($internalLink):?>
-		  <a href="#<?php echo $dp->getId();?>"><?php echo $dp->getName();?></a>
-		<?php else:?>
-	      <?php echo link_to($dp->getName(), 'dp/view?id='.$dp->getId());?>
-		<?php endif;?>
-		 - 
+	    <ul>
+	  <?php foreach($category->getRootDps() as $dp ):?>
+	    <?php include_partial('hierarchicalDp', array('dp' => $dp, 'category' =>$category, 'internalLink' => $internalLink)) ?>
 	  <?php endforeach;?>
+	    </ul>
 	  </td>
     </tr>
     <?php endforeach; ?>

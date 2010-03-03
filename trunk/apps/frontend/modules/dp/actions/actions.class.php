@@ -93,7 +93,7 @@ class dpActions extends sfActions
 	  $this->categories = Doctrine::getTable('Category')
       ->createQuery('a')
 	  ->addOrderBy('a.name ASC')
-      ->execute();  
+      ->execute();
 
 	  $this->dpsWithoutCategories = Doctrine_Query::create()
       ->from('Dp d')
