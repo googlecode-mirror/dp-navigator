@@ -42,4 +42,19 @@ class Dp extends BaseDp
 
 	return $out;
   }
+
+
+  /* Return children (according to relation 1 (inclusion)) of this Dp (optionnaly belonging to a category)*/
+  public function getChildren($category) {
+    $q = Doctrine_Query::create()
+	->select('d.*')
+	->from('Dp d, DpRelation dr, DpCategory dc')
+	->where('dr.source_id=?', $this->getId())      // look for children (according to relation of type 1 (inclusion) )
+	->andWhere('dr.target_id=d.id')
+	->andWhere('dr.type_id=?', 1)
+	->andWhere('d.id=dc.dp_id')          // ... in this category
+	->andWhere('dc.category_id=?', $category->getId());
+
+	return $q->execute();
+  }
 }

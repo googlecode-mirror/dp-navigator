@@ -134,8 +134,11 @@ h3 {font-size:1.6em; margin:12px 0}
   }
   .summary td {
     border:1px solid #AAAAAA;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 10px;
+  }
+  .summary ul {
+	margin:0;
+	list-style: none;
   }
 
 .patternName {
