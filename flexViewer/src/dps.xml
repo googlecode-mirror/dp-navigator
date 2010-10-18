@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<Graph>
+  <Node id="24" name="Serious Game" desc="Comment ins&#xE9;rer des interactions avanc&#xE9;es ou motiver des utilsateurs dans un projet de communication sans rendre sa conception trop complexe ?&#10;" nodeColor="0x8F8FFF" nodeSize="12" nodeClass="tree" nodeIcon="2" x="10" y="15"/>
+  <Node id="25" name="Game-Based Learning" desc="Comment m&#xE9;ler des aspects ludiques et des aspects p&#xE9;dagogiques ?&#10;" nodeColor="0x8F8FFF" nodeSize="12" nodeClass="tree" nodeIcon="2" x="10" y="15"/>
+  <Node id="26" name="Learning Interactions" desc="Comment employer les interactions propres aux jeux vid&#xE9;os pour enseigner des connaissances ?&#10;" nodeColor="0x8F8FFF" nodeSize="12" nodeClass="tree" nodeIcon="2" x="10" y="15"/>
+  <Node id="27" name="Sucre Facilitateur" desc="" nodeColor="0x8F8FFF" nodeSize="12" nodeClass="tree" nodeIcon="2" x="10" y="15"/>
+  <Node id="28" name="Carotte Ludique" desc="" nodeColor="0x8F8FFF" nodeSize="12" nodeClass="tree" nodeIcon="2" x="10" y="15"/>
+  <Node id="29" name="Interaction Pavlovienne" desc="" nodeColor="0x8F8FFF" nodeSize="12" nodeClass="tree" nodeIcon="2" x="10" y="15"/>
+  <Node id="30" name="Mise en Situation" desc="" nodeColor="0x8F8FFF" nodeSize="12" nodeClass="tree" nodeIcon="2" x="10" y="15"/>
+  <Node id="31" name="Micro-Monde" desc="" nodeColor="0x8F8FFF" nodeSize="12" nodeClass="tree" nodeIcon="2" x="10" y="15"/>
+  <Edge fromID="24" toID="25" edgeLabel="instanciates" color="0x8F8FFF" edgeClass="rain" edgeIcon="Bad"/>
+  <Edge fromID="25" toID="26" edgeLabel="instanciates" color="0x8F8FFF" edgeClass="rain" edgeIcon="Bad"/>
+  <Edge fromID="25" toID="27" edgeLabel="instanciates" color="0x8F8FFF" edgeClass="rain" edgeIcon="Bad"/>
+  <Edge fromID="25" toID="28" edgeLabel="instanciates" color="0x8F8FFF" edgeClass="rain" edgeIcon="Bad"/>
+  <Edge fromID="26" toID="29" edgeLabel="instanciates" color="0x8F8FFF" edgeClass="rain" edgeIcon="Bad"/>
+  <Edge fromID="26" toID="30" edgeLabel="instanciates" color="0x8F8FFF" edgeClass="rain" edgeIcon="Bad"/>
+  <Edge fromID="26" toID="31" edgeLabel="instanciates" color="0x8F8FFF" edgeClass="rain" edgeIcon="Bad"/>
+</Graph>

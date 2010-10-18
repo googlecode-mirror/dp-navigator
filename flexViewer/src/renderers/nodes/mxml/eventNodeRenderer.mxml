@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="*" 
+	xmlns:primitive="org.un.cava.birdeye.ravis.assets.icons.primitives.*"
+	>
+
+	<!-- This a basic circle itemRenderer for a node.
+		 The color is by a given xml parameter -->
+	
+	<mx:HBox verticalAlign="middle" horizontalAlign="center" horizontalGap="0" styleName="dpContainer">
+	<!--mx:Spacer height="1" />
+	<primitive:Circle id="circle" toolTip="{XML(this.data.data).@name}"/-->
+    <mx:Label id="nodeText2" text="{XML(this.data.data).@name}"  toolTip="{XML(this.data.data).@desc}" styleName="dpLabel"/>
+	<mx:VBox verticalGap="0">
+		<mx:LinkButton id="nodeText3" label="focus"  click="focus(event)" paddingLeft="0" paddingRight="0" styleName="dpButton"/>
+		<mx:LinkButton id="nodeText4" label="view"  click="showDetails(event)" paddingLeft="0" paddingRight="0" styleName="dpButton"/>
+	</mx:VBox>
+	
+	</mx:HBox>
+	
+	<mx:Script>
+		<![CDATA[
+ 		
+			import mx.core.FlexGlobals;
+			/*private function setNodeCircle():void {
+			
+			var nodeColor:int = this.data.data.@nodeColor;
+			var nodeSize:int = this.data.data.@nodeSize;
+			
+			circle.color=nodeColor;
+			circle.width=nodeSize;
+			circle.height=nodeSize;
+   			}*/
+   			
+   			private function focus(event:Event):void{
+				/*var node:INode = event.node;*/
+				//trace(this.data);
+				FlexGlobals.topLevelApplication.vgraph.currentRootVNode = this.data;
+				FlexGlobals.topLevelApplication.vgraph.draw();
+
+   			}
+			
+			private function showDetails(event:Event):void{	
+				var urlRequest:URLRequest = new URLRequest(FlexGlobals.topLevelApplication.pagePath + '/view/id/' + this.data.data.@id);
+				navigateToURL(urlRequest, "_self");
+				
+				/*parentDocument.nodeID.text=this.data.data.@id;
+				parentDocument.nodeName.text=this.data.data.@name;
+				parentDocument.nodeDesc.text=this.data.data.@desc;*/
+			}
+		]]>
+	</mx:Script>	
+</mx:Canvas>
